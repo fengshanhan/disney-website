@@ -6,12 +6,65 @@
 
 <title>Disney World</title>
 
+
+
 <link type="text/css" rel="stylesheet" href="../static/css/stylesheet.css"></link>
 <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
- 
- 
+
+ <script typet="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js">
+
+</script>
+
+
+    <script type="text/javascript">
+$(function(){
+//这是加1
+$(".contentli").find(".jia").click(function(){
+$(this).prev().val(parseInt($(this).prev().val())+1);
+
+});
+//这是减1
+$(".contentli").find(".jian").click(function(){
+$(this).next().val(parseInt($(this).next().val())-1);
+});
+
+//这里是点击购物车
+$("#shop").click(function(){
+var myDate = new Date();
+
+
+var shophtml="";
+$(".contentli").each(function(i,e){
+
+if($(this).find(".con").val()>0){
+
+alert($("#food1").text()+"#"+$(this).find(".con").val()+"#"+myDate.toLocaleString());
+
+shophtml+="<li><span>"+$("#p1").text()+"#"+$("#tStartn")[0].value+"#"+$("#tEndn")[0].value+"#"+$(this).find(".con").val()+"</span></li>"
+}
+
+if($(this).find(".con1").val()>0){
+shophtml+="<li><span>"+$("#p2").text()+"#"+$("#tStartv")[0].value+"#"+$("#tEndv")[0].value+"#"+$(this).find(".con1").val()+"</span></li>"
+}
+
+
+
+
+})
+
+$(".tott").html(shophtml);
+
+
+})
+
+
+
+
+})
+</script>
+
  
  <style>
  body {
@@ -40,7 +93,7 @@
  min-width: 700px; 
  max-width: 70%; 
  min-height: 200px; 
- max-height: 290px; 
+ max-height: 320px;
  margin: 0 auto; 
  margin-bottom: 30px; 
  background-color: #EEE;
@@ -77,7 +130,7 @@
  <li class="menu"><a href="attractions.html">Hot Activity</a></li>
  <li class="menu"><a href="shop.html">Room</a></li>
  <li class="menu" id="active"><a href="food.html"><i class="fa fa-caret-left" aria-hidden="true"></i> Back to Foods</a></li>
- <li class="menu"><a href="rides.html">Activity</a></li>
+ <li class="menu"><a href="activity.html">Activity</a></li>
  <li class="menu"><a href="index.html">Home</a></li>
 </ul>
 
@@ -92,14 +145,23 @@
  
   
    <div class = 'item'>
+
+
     <div class = 'itemImg'>
     <img src = '../static/images/bars.jpg'>
     </div>
     <div class = 'itemTxt'>
-     <h1>Nanaimo Bars <font color="red">$19.99</font></h1>
+     <h1 id="food1">Nanaimo Bars <font color="red">$19.99</font></h1>
      <p> Chocolate, icing, and wafer crumbs. Originating from Nanaimo,BC.
      Cheating on your diet never tasted better.  </p>
     </div>
+
+    <div><div class="contentli">
+<input type="button" name="" id="button1" value="-" class="jian"/>
+<input type="button" name="" id="button2" value="0" class="con"/>
+	<input type="button" value="+" class="jia"/>
+     <input type="button" name="" id="shop" value="purchase" /></div></td></div>
+
   </div>
   
    <div class = 'item'>
