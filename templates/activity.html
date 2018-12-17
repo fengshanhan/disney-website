@@ -12,8 +12,6 @@
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
  
- 
- 
  <style>
  body {
 
@@ -150,99 +148,25 @@ img{
   
   <h1 class="title" style='margin-bottom: 15px; font-size: 300%;'>Activity</h1>
 
-  
-   <div class = 'item'>
 
-    <div class = 'itemImg'>
-     <img src = '../static/images/ferriswheel.jpeg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>Wonder Wheel</h1>
-     <p>Enjoy mad rotations and scenic views in this classic fan favorite ride.
+  {% for activity in activtys %}
+                <div class="item">
+                 <div class = 'itemImg'>
 
-      <button><a class="foodlink" href="ww_activity.html">View</a></button>
-     </p>
-    </div>
+                       <img src= activity.path>
+                       </div>
+                 <div class = 'itemTxt'>
+                   <h1> <div class="name">{{ activity.name }} </div></h1>
+                    <p><div class="content">{{ activity.content }}</div>
 
-  </div>
-  
-   <div class = 'item'>
-    <div class = 'itemImg'>
-     <img src = '../static/images/crazybus.jpg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>Crazy Bus</h1>
-     <p>This isnt your ordinary bus ride to school. Experience the thrills
-     your kids wish they had every morning.</p>
-    </div>
-  </div>
-  
-   <div class = 'item'>
-    <div class = 'itemImg'>
-     <img src = '../static/images/chair.jpg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>Flying Chairs</h1>
-     <p> Bored of sitting on regular chairs that do nothing? Well then you need to try the Flying Chairs.</p>
-    </div>
-  </div>
-  
-   <div class = 'item'>
-    <div class = 'itemImg'>
-    <img src = '../static/images/pirateship.jpg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>Avast Ye M80!</h1>
-     <p>Enjoy the experience that Jack Sparrow had riding on the Black Pearl.</p>
-    </div>
-  </div>
-  
+                    <button><a class="foodlink" href="ww_activity.html">View</a></button></p>
+                 </div>
+                </div>
+            {% endfor %}
 
-   <div class = 'item'>
-    <div class = 'itemImg'>
-    <img src = '../static/images/slide.jpg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>Slip n' Slither</h1>
-     <p>Slip n Slide on this watery ride and experience how you can glide. </p>
-    </div>
-  </div>
-  
-   <div class = 'item'>
-    <div class = 'itemImg'>
-    <img src = '../static/images/swingride.jpg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>Wacky Wave</h1>
-     <p>Are you brave enough to get on the Wacky Wave to experience your desiring crave?</p>
-    </div>
-  </div>
-    
-  <div class = 'item'>
-    <div class = 'itemImg'>
-    <img src = '../static/images/logride.jpg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>Rough Rapids</h1>
-     <p>During a hot day, nothing is better than a splash of cold water. Hop in this log, and HAVE A SPLASH!!</p>
-    </div>
-  </div>
-    
-     <div class = 'item'>
-    <div class = 'itemImg'>
-    <img src = '../static/images/metalcoaster.jpg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>The Kraken</h1>
-     <p>Inspired by the mythological beast, you're gunna scream as if you have just seen it in person.</p>
-    </div>
-  </div>
-    
-  
   
  </div>
- 
-  
+
 
 </div>
 
