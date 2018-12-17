@@ -40,20 +40,38 @@ $(".contentli").each(function(i,e){
 
 if($(this).find(".con").val()>0){
 
-alert($("#food1").text()+"#"+$(this).find(".con").val()+"#"+myDate.toLocaleString());
+shophtml+=$("#food1").text()+"#"+$(this).find(".con").val()+"#";
 
-shophtml+="<li><span>"+$("#p1").text()+"#"+$("#tStartn")[0].value+"#"+$("#tEndn")[0].value+"#"+$(this).find(".con").val()+"</span></li>"
 }
 
 if($(this).find(".con1").val()>0){
-shophtml+="<li><span>"+$("#p2").text()+"#"+$("#tStartv")[0].value+"#"+$("#tEndv")[0].value+"#"+$(this).find(".con1").val()+"</span></li>"
+
+shophtml+=$("#food2").text()+"#"+$(this).find(".con1").val()+"#";
 }
+
+if($(this).find(".con2").val()>0){
+
+shophtml+=$("#food3").text()+"#"+$(this).find(".con2").val()+"#";
+}
+
+if($(this).find(".con3").val()>0){
+
+shophtml+=$("#food4").text()+"#"+$(this).find(".con3").val()+"#";
+}
+
+if($(this).find(".con4").val()>0){
+
+shophtml+=$("#food5").text()+"#"+$(this).find(".con4").val()+"#";
+}
+
 
 
 
 
 })
 
+shophtml+=myDate.toLocaleString();
+alert(shophtml);
 $(".tott").html(shophtml);
 
 
@@ -65,10 +83,10 @@ $(".tott").html(shophtml);
 })
 </script>
 
- 
+
  <style>
  body {
-   
+
     background-image:url(../static/images/parliament.jpg);
     min-height: 100%;
     background-repeat: no-repeat;
@@ -88,14 +106,14 @@ $(".tott").html(shophtml);
   padding:3%;
 }
 
-  
+
   .item {
- min-width: 700px; 
- max-width: 70%; 
- min-height: 200px; 
+ min-width: 700px;
+ max-width: 70%;
+ min-height: 200px;
  max-height: 320px;
- margin: 0 auto; 
- margin-bottom: 30px; 
+ margin: 0 auto;
+ margin-bottom: 30px;
  background-color: #EEE;
  padding: 10px;
  border: 2px solid;
@@ -112,14 +130,14 @@ $(".tott").html(shophtml);
     width:275px;
 }
 </style>
- 
- 
- 
+
+
+
 </head>
 <body>
  <div class="icon-bar">
- <a class="active" href="#"><i class="fa fa-google-plus"></i></a> 
- <a class="active1" href="#"><i class="fa fa-facebook"></i></a> 
+ <a class="active" href="#"><i class="fa fa-google-plus"></i></a>
+ <a class="active1" href="#"><i class="fa fa-facebook"></i></a>
  <a class="active2" href="#"><i class="fa fa-twitter"></i></a>
  <a href="map.html" id="search"><i class="fa fa-map-o" aria-hidden="true"></i></a>
 </div>
@@ -135,99 +153,39 @@ $(".tott").html(shophtml);
 </ul>
 
 <div class="ridesbg">
- 
+
  <div class="ridecontent">
-  
 
-  
+
+
   <h1 class="title" style='margin-bottom: 15px; font-size: 300%;'>Canadian Food</h1>
-  
- 
-  
+
+ { % for menu1 in menu1s %}
+
+
    <div class = 'item'>
-
-
     <div class = 'itemImg'>
-    <img src = '../static/images/bars.jpg'>
+    <img src = {{menu1.path}}>
     </div>
     <div class = 'itemTxt'>
-     <h1 id="food1">Nanaimo Bars <font color="red">$19.99</font></h1>
-     <p> Chocolate, icing, and wafer crumbs. Originating from Nanaimo,BC.
-     Cheating on your diet never tasted better.  </p>
+     <h1 id="food1">{{menu1.name}} <font color="red">{{menu1.price}}</font></h1>
+     <p> {{menu1.desc}}  </p>
     </div>
 
-    <div><div class="contentli">
+    <div>
+        <div class="contentli">
 <input type="button" name="" id="button1" value="-" class="jian"/>
-<input type="button" name="" id="button2" value="0" class="con"/>
+<input type="button" name="" id="button2" value="0" class={{menu1.class_name}}/>
 	<input type="button" value="+" class="jia"/>
-     <input type="button" name="" id="shop" value="purchase" /></div></td></div>
+    </div>
+    </div>
 
   </div>
-  
-   <div class = 'item'>
-    <div class = 'itemImg'>
-    <img src = '../static/images/poutine.jpg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>Ch-EZ Poutine <font color="red">$25.99</font></h1>
-     <p> When people think of a genuine Canadian food, they think of poutine. Contains cheese curds,
-     gravy,and french fries. Yum! </p>
-    </div>
-  </div>
-  
-   <div class = 'item'>
-    <div class = 'itemImg'>
-    <img src = '../static/images/beavertails.jpg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>BeaverTails <br><font color="red">$15.99</font></h1>
-     <p> Experience this 100% Canadian pastry, straight from Ottawa. DISCLAIMER: Does not contain actual beaver. </p>
-    </div>
-  </div>
-  
-   <div class = 'item'>
-    <div class = 'itemImg'>
-    <img src = '../static/images/ketchupchips.jpg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>Ketchup Chips <font color="red">$15.99</font></h1>
-     <p>If you're not from Canada, ketchup chips may seem disgusting. But it only takes one chip to discover
-     what you've been missing.</p>
-    </div>
-  </div>
-  
+          {% end for %}<br>
 
-   <div class = 'item'>
-    <div class = 'itemImg'>
-    <img src = '../static/images/buttertart.jpg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>Butter Tarts <br><font color="red">$23.99</font></h1>
-     <p>Imagine a cookie, turned into a bowl, with pecans mixed with sugar and butter. This is that thing.</p>
-    </div>
-  </div>
-  
-   <div class = 'item'>
-    <div class = 'itemImg'>
-    <img src = '../static/images/burger1.jpg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>Canadian Burger <font color="red">$29.99</font></h1>
-     <p>This may look like a regular American burger, but we assure you, this is 100% Canadian.
-     (Ignore the drink in picture</p>
-    </div>
-  </div>
-    
- 
-  
-  
+      <button><a class="foodlink" href="food.html">Return</a></button>
+     <input type="button" name="" id="shop" value="purchase" />
  </div>
- 
-  
-
 </div>
-
-
-
 </body>
 </html>

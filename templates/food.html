@@ -188,75 +188,25 @@ a.foodlink:active {
   
   <h1 class="title" style='margin-bottom: 15px; font-size: 300%;'>Dining</h1>
   
- 
-  
-   <div class = 'item'>
+ {% for menu in menus %}
+        <div class = 'item'>
     <div class = 'itemImg'>
-    <img src = '../static/images/canadian.jpg'>
+    <img src = {{food.path}}>
     </div>
     <div class = 'itemTxt'>
-     <h1>All Canadian Experience</h1>
-     <p>Have a taste of "The True North Strong and Free".<br><i>Bon Appetit!</i> <button><a class="foodlink" href="canfood.html">VIEW</a></button></p>
-    </div>
-  </div>
-
- 
- <div class = 'item'>
-    <div class = 'itemImg'>
-    <img src = '../static/images/italian.jpg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>Italian Food</h1>
-     <p>From the makers of well known foods like "Pizza" and "Lasagna"...<button><a class="foodlink" href="itafood.html">VIEW</a></button></p>
+     <h1>{{menu.name}}</h1>
+     <p>{{menu.desc}}<br>
+         <button><a class="foodlink" href="canfood.html">VIEW</a></button></p>
     </div>
   </div>
 
 
- <div class = 'item'>
-    <div class = 'itemImg'>
-    <img src = '../static/images/mexican.jpg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>Mexican Food</h1>
-     <p>Prepare to have your mouth engulfed in flames. DISCLAIMER: Toilets may be unavailable for use. 
-        <button><a class="foodlink" href="mexfood.html">VIEW</a>
-        </button>
-     </p>
-    </div>
-  </div>
+     {% endfor %}
 
 
-<div class = 'item'>
-    <div class = 'itemImg'>
-    <img src = '../static/images/asian.jpg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>Asian Cuisine</h1>
-     <p>Foods from all over this magnificent continent. From beef to butter chicken and everything in between.  <button><a class="foodlink" href="asianfood.html">VIEW</a></button></p>
-    </div>
-  </div>
- 
-<div class = 'item'>
-    <div class = 'itemImg'>
-    <img src = '../static/images/dessert.jpg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>Desserts & Sweets</h1>
-     <p> Have a sweet tooth? Satisfy your craving. Warm or cold, we have you covered. <button><a class="foodlink" href="sweets.html">VIEW</a></button></p>
-    </div>
-  </div>
 
-<div class = 'item'>
-    <div class = 'itemImg'>
-    <img src = '../static/images/snacks.png'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>Snacks & Beverages</h1>
-     <p> Have a taste for something sweet or salty? Well we have the thing for you. Easy to eat and delicious.<button><a class="foodlink" href="snacks.html">VIEW</a></button></p>
-    </div>
-  </div>
-  
-
+ </div>
+</div>
 
 </body>
 
