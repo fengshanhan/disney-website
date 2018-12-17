@@ -22,7 +22,7 @@
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-
+    margin:0;
 
 }
 
@@ -74,17 +74,22 @@ img:hover{
 
 <div class="sideright">
 				<div class="index">
-					<form action="#" method="get">
+					<form action="" method="post">
 						<p class="astyle">Username:</p>
-						<input type="text" hint="Please input your username">
-						<p class="astyle">Password:</p>
-						<input type="text" hint="Please input your password">
-						<input type="submit" value="Login" name="login" >
-						<input type="submit" value="Return" name="return" >
-						</br>
-						<p class="bstyle"><input type="checkbox" name="rempas" />Remmber me</p>
+						<input type="text" name="name" hint="Please input your username">
 
-                        <p class="cstyle">No account?<a href="zhuce.html">Register</a></p>
+						<p class="astyle">Password:</p>
+						<input type="text" name="password" hint="Please input your password">
+
+                        <p class="astyle">Password confirm:</p>
+						<input type="text" name="confirm" hint="Please input your password">
+
+						<input type="submit" value="Login" name="login" >
+
+						</br>
+						<p class="bstyle"><input type="checkbox" name="rempas" />Remember me</p>
+
+                        <p class="cstyle">Go to login<a href="login.html">Login</a></p>
 
 						</br></br>
 
