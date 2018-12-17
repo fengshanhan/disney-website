@@ -17,6 +17,23 @@
 
 
     <script type="text/javascript">
+
+ window.onload=function(){
+import pymysql
+con=pymysql.connect(host="localhost", port=3306, user="root", passwd="", db="test", charset="utf8")
+  rel = con.cursor()
+  rel.execute('select * from '+a)
+  val = rel.fetchall()
+  a=len(val)
+  con.close();
+  rel.close();
+
+document.getElementById("p1").innerHTML = (val);
+alert("onload");
+
+}
+
+
 $(function(){
 //这是加1
 $(".contentli").find(".jia").click(function(){
@@ -163,17 +180,6 @@ img:hover{
          </td>
 </tr>
 
-<tr>
-    <td>Total</td>
-    <td><div>
-<ul class="tott">
-
-</ul>
-</div></td>
-    <td></td>
-    <td></td>
-<td></td>
-</tr>
 
 
 	</table>

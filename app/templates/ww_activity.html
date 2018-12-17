@@ -141,7 +141,7 @@ $("#shop").attr("disabled",true);
 document.getElementById("book1").innerHTML = ($("#book1").text()*1 + $(this).find(".con").val()*1);
 document.getElementById("rest1").innerHTML = ($("#rest1").text()*1 - $(this).find(".con").val()*1);
 
-shophtml+="<li><span>"+$("#t1").text()+"#"+$(this).find(".con").val()+"</span></li>"
+alert('Wonder_Wheel'+"#"+$("#t1").text()+"#"+$(this).find(".con").val());
 
 }}
 
@@ -194,6 +194,163 @@ $(".tott").html(shop1html);
 
 })
 
+
+
+$("#shop2").click(function(){
+
+var shop1html="";
+
+$(".contentli").each(function(i,e){
+if($(this).find(".con2").val()>0){
+
+if($(this).find(".con2").val()>4){
+ alert('The maximum number of people you booked is four.');
+}
+
+else{
+if($("#rest3").text()<$(this).find(".con2").val()){
+
+alert('The current remaining number is insufficient. Please reserve the next time.');
+}
+
+else{
+
+
+$("#shop2").attr("disabled",true);
+//yyy
+document.getElementById("rest3").innerHTML = ($("#rest3").text()*1 - $(this).find(".con2").val()*1);
+document.getElementById("book3").innerHTML = ($("#book3").text()*1 + $(this).find(".con2").val()*1);
+
+alert('Wonder_Wheel'+"#"+$("#t3").text()+"#"+$(this).find(".con2").val());
+
+}
+
+}
+
+}
+
+})
+
+$(".tott").html(shop1html);
+
+})
+
+$("#shop3").click(function(){
+
+var shop1html="";
+
+$(".contentli").each(function(i,e){
+if($(this).find(".con3").val()>0){
+
+if($(this).find(".con3").val()>4){
+ alert('The maximum number of people you booked is four.');
+}
+
+else{
+if($("#rest4").text()<$(this).find(".con3").val()){
+
+alert('The current remaining number is insufficient. Please reserve the next time.');
+}
+
+else{
+
+
+$("#shop3").attr("disabled",true);
+//yyy
+document.getElementById("rest4").innerHTML = ($("#rest4").text()*1 - $(this).find(".con3").val()*1);
+document.getElementById("book4").innerHTML = ($("#book4").text()*1 + $(this).find(".con3").val()*1);
+
+alert('Wonder_Wheel'+"#"+$("#t4").text()+"#"+$(this).find(".con3").val());
+
+}
+
+}
+
+}
+
+})
+
+$(".tott").html(shop1html);
+
+})
+
+$("#shop4").click(function(){
+
+var shop1html="";
+
+$(".contentli").each(function(i,e){
+if($(this).find(".con4").val()>0){
+
+if($(this).find(".con4").val()>4){
+ alert('The maximum number of people you booked is four.');
+}
+
+else{
+if($("#rest5").text()<$(this).find(".con4").val()){
+
+alert('The current remaining number is insufficient. Please reserve the next time.');
+}
+
+else{
+
+
+$("#shop4").attr("disabled",true);
+//yyy
+document.getElementById("rest5").innerHTML = ($("#rest5").text()*1 - $(this).find(".con4").val()*1);
+document.getElementById("book5").innerHTML = ($("#book5").text()*1 + $(this).find(".con4").val()*1);
+
+alert('Wonder_Wheel'+"#"+$("#t5").text()+"#"+$(this).find(".con4").val());
+
+}
+
+}
+
+}
+
+})
+
+$(".tott").html(shop1html);
+
+})
+
+$("#shop5").click(function(){
+
+var shop1html="";
+
+$(".contentli").each(function(i,e){
+if($(this).find(".con5").val()>0){
+
+if($(this).find(".con5").val()>4){
+ alert('The maximum number of people you booked is four.');
+}
+
+else{
+if($("#rest6").text()<$(this).find(".con5").val()){
+
+alert('The current remaining number is insufficient. Please reserve the next time.');
+}
+
+else{
+
+
+$("#shop5").attr("disabled",true);
+//yyy
+document.getElementById("rest6").innerHTML = ($("#rest6").text()*1 - $(this).find(".con5").val()*1);
+document.getElementById("book6").innerHTML = ($("#book6").text()*1 + $(this).find(".con5").val()*1);
+
+alert('Wonder_Wheel'+"#"+$("#t6").text()+"#"+$(this).find(".con5").val());
+
+}
+
+}
+
+}
+
+})
+
+$(".tott").html(shop1html);
+
+})
 })
 
 
@@ -412,8 +569,8 @@ height:auto
 
 	<tr>
     	<td id="t3">9:00--9:30</td>
-    	<td>0</td>
-    	<td>50</td>
+    	<td id="book3">0</td>
+    	<td id="rest3">50</td>
            <td>
 <div class="contentli">
 <input type="button" name="" id="button5" value="-" class="jian"/>
@@ -425,8 +582,8 @@ height:auto
 
 
     	<td id="t4">9:30--10:00</td>
-    	<td>0</td>
-    	<td>50</td>
+    	<td id="book4">0</td>
+    	<td id="rest4">50</td>
           <td>
 <div class="contentli">
 <input type="button" name="" id="button7" value="-" class="jian"/>
@@ -435,8 +592,8 @@ height:auto
 
  	 </tr>
     	<td id="t5">10:30--11:00</td>
-    	<td>0</td>
-    	<td>50</td>
+    	<td id="book5">0</td>
+    	<td id="rest5">50</td>
            <td>
 <div class="contentli">
 <input type="button" name="" id="button9" value="-" class="jian"/>
@@ -447,8 +604,8 @@ height:auto
 
 	 </tr>
     	<td id="t6">11:00--11:30</td>
-    	<td>0</td>
-    	<td>50</td>
+    	<td id="book6">0</td>
+    	<td id="rest6">50</td>
           <td>
 <div class="contentli">
 <input type="button" name="" id="button11" value="-" class="jian"/>
@@ -481,7 +638,7 @@ height:auto
 </ul>
 </div>
 
-     <button><a class="foodlink" href="activity.html">Ruturn</a></button>
+     <button><a class="foodlink" href="activity.html">Return</a></button>
 
 </div>
 
