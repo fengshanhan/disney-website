@@ -10,82 +10,14 @@
 <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-  <script typet="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js">
-
-</script>
-
-
-    <script type="text/javascript">
-$(function(){
-//这是加1
-$(".contentli").find(".jia").click(function(){
-$(this).prev().val(parseInt($(this).prev().val())+1);
-
-});
-//这是减1
-$(".contentli").find(".jian").click(function(){
-$(this).next().val(parseInt($(this).next().val())-1);
-});
-
-//这里是点击购物车
-$("#shop").click(function(){
-var myDate = new Date();
-
-
-var shophtml="";
-$(".contentli").each(function(i,e){
-
-if($(this).find(".con").val()>0){
-
-shophtml+=$("#food1").text()+"#"+$(this).find(".con").val()+"#";
-
-}
-
-if($(this).find(".con1").val()>0){
-
-shophtml+=$("#food2").text()+"#"+$(this).find(".con1").val()+"#";
-}
-
-if($(this).find(".con2").val()>0){
-
-shophtml+=$("#food3").text()+"#"+$(this).find(".con2").val()+"#";
-}
-
-if($(this).find(".con3").val()>0){
-
-shophtml+=$("#food4").text()+"#"+$(this).find(".con3").val()+"#";
-}
-
-if($(this).find(".con4").val()>0){
-
-shophtml+=$("#food5").text()+"#"+$(this).find(".con4").val()+"#";
-}
-
-
-
-
-
-})
-
-shophtml+=myDate.toLocaleString();
-alert(shophtml);
-$(".tott").html(shophtml);
-
-
-})
-
-
-
-
-})
-</script>
+ 
  
  
  <style>
  body {
    
     background-image:url(../static/images/italy.jpg);
-    min-height: 120%;
+    min-height: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -101,11 +33,11 @@ $(".tott").html(shophtml);
 
 
  p{
-    font-size:20px;
+    font-size:25px;
 }
 
  img{
-    height:200px;
+    height:183px;
     width:275px;
 }
 
@@ -113,7 +45,7 @@ $(".tott").html(shophtml);
  min-width: 700px; 
  max-width: 70%; 
  min-height: 200px; 
- max-height: 350px;
+ max-height: 235px; 
  margin: 0 auto; 
  margin-bottom: 30px; 
  background-color: #EEE;
@@ -136,10 +68,10 @@ $(".tott").html(shophtml);
 <ul class="menu">
  <img src="../static/images/panda_logo_good.png" id="logo" align="center">
  <li class="menu"><a href="information.html">Information</a></li>
- <li class="menu"><a href="attractions.html">Hot Activity</a></li>
- <li class="menu"><a href="shop.html">room</a></li>
+ <li class="menu"><a href="attractions.html">Attractions</a></li>
+ <li class="menu"><a href="shop.html">Shop</a></li>
  <li class="menu" id="active"><a href="food.html"><i class="fa fa-caret-left" aria-hidden="true"></i> Back to Foods</a></li>
- <li class="menu"><a href="activity.html">activity</a></li>
+ <li class="menu"><a href="rides.html">Rides</a></li>
  <li class="menu"><a href="index.html">Home</a></li>
 </ul>
 
@@ -158,17 +90,9 @@ $(".tott").html(shophtml);
     <img src = '../static/images/pizza.jpg'>
     </div>
     <div class = 'itemTxt'>
-     <h1 id="food1">Pizza Margherita <font color="#62b7f4">$29.99</font></h1>
+     <h1>Pizza Margherita <font color="#62b7f4">$29.99</font></h1>
      <p> Fancy a piping hot pizza, fresh out of the oven? Well say no more. Its packed with the finest mozzarella cheese from Italy.   </p>
     </div>
-        <div>
-        <div class="contentli">
-<input type="button" name="" id="button1" value="-" class="jian"/>
-<input type="button" name="" id="button2" value="0" class="con"/>
-	<input type="button" value="+" class="jia"/>
-    </div>
-    </div>
-
   </div>
   
    <div class = 'item'>
@@ -176,18 +100,9 @@ $(".tott").html(shophtml);
     <img src = '../static/images/cacio-e-pepe.jpg'>
     </div>
     <div class = 'itemTxt'>
-     <h1 id="food2">Cacio e Pepe <br><font color="#62b7f4">$25.99</font></h1>
+     <h1>Cacio e Pepe <br><font color="#62b7f4">$25.99</font></h1>
      <p> If you are a Mac and Cheese fan then you would love this dish. Pasta with cheese and freshly grounded pepper. </p>
     </div>
-   <div>
-        <div class="contentli">
-<input type="button" name="" id="button3" value="-" class="jian"/>
-<input type="button" name="" id="button4" value="0" class="con1"/>
-	<input type="button" value="+" class="jia"/>
-    </div>
-    </div>
-
-
   </div>
   
    <div class = 'item'>
@@ -195,18 +110,9 @@ $(".tott").html(shophtml);
     <img src = '../static/images/meatball.jpg'>
     </div>
     <div class = 'itemTxt'>
-     <h1 id="food3">Spaghetti & Meatballs <font color="#62b7f4">$32.99</font></h1>
+     <h1>Spaghetti & Meatballs <font color="#62b7f4">$32.99</font></h1>
      <p> Experience this delicious and mouth watering classic Italian dish with a special sauce. </p>
     </div>
-
-        <div>
-        <div class="contentli">
-<input type="button" name="" id="button5" value="-" class="jian"/>
-<input type="button" name="" id="button6" value="0" class="con2"/>
-	<input type="button" value="+" class="jia"/>
-    </div>
-    </div>
-
   </div>
   
    <div class = 'item'>
@@ -214,18 +120,9 @@ $(".tott").html(shophtml);
     <img src = '../static/images/Lasgna.jpg'>
     </div>
     <div class = 'itemTxt'>
-     <h1 id="food4">Lasagna <br><font color="#62b7f4">$19.99</font></h1>
+     <h1>Lasagna <br><font color="#62b7f4">$19.99</font></h1>
      <p>Enjoy this layered lasagna with noodles, Italian sausage, ricotta cheese, baked mozzarella and romano cheese.</p>
     </div>
-
-        <div>
-        <div class="contentli">
-<input type="button" name="" id="button7" value="-" class="jian"/>
-<input type="button" name="" id="button8" value="0" class="con3"/>
-	<input type="button" value="+" class="jia"/>
-    </div>
-    </div>
-
   </div>
   
 
@@ -234,29 +131,31 @@ $(".tott").html(shophtml);
     <img src = '../static/images/chicken.jpg'>
     </div>
     <div class = 'itemTxt'>
-     <h1 id="food5">Chicken Sorrento <font color="#62b7f4">$23.99</font></h1>
+     <h1>Chicken Sorrento <font color="#62b7f4">$23.99</font></h1>
      <p>Simply skinless chicken breasts, then simmer them with frozen stir-fry vegetables and a creamy Italian dressing. Yummy!!   </p>
     </div>
-
-         <div>
-        <div class="contentli">
-<input type="button" name="" id="button9" value="-" class="jian"/>
-<input type="button" name="" id="button10" value="0" class="con4"/>
-	<input type="button" value="+" class="jia"/>
-    </div>
-    </div>
-
   </div>
-        <button><a class="foodlink" href="food.html">Return</a></button>
-     <input type="button" name="" id="shop" value="purchase" />
+  
+   <div class = 'item'>
+    <div class = 'itemImg'>
+    <img src = '../static/images/sausage.jpg'>
+    </div>
+    <div class = 'itemTxt'>
+     <h1>Italian Sausage <font color="#62b7f4">$15.99</font> </h1>
+     <p>Sweet, grilled fennel makes a perfect partner for the spiced sausage.</p>
+    </div>
+  </div>
+    
+ 
+  
+  
  </div>
  
-
+  
 
 </div>
 
 
 
 </body>
-
 </html>

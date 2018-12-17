@@ -10,76 +10,7 @@
 <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
- <script typet="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js">
-
-</script>
-
-
-    <script type="text/javascript">
-$(function(){
-//这是加1
-$(".contentli").find(".jia").click(function(){
-$(this).prev().val(parseInt($(this).prev().val())+1);
-
-});
-//这是减1
-$(".contentli").find(".jian").click(function(){
-$(this).next().val(parseInt($(this).next().val())-1);
-});
-
-//这里是点击购物车
-$("#shop").click(function(){
-var myDate = new Date();
-
-
-var shophtml="";
-$(".contentli").each(function(i,e){
-
-if($(this).find(".con").val()>0){
-
-shophtml+=$("#food1").text()+"#"+$(this).find(".con").val()+"#";
-
-}
-
-if($(this).find(".con1").val()>0){
-
-shophtml+=$("#food2").text()+"#"+$(this).find(".con1").val()+"#";
-}
-
-if($(this).find(".con2").val()>0){
-
-shophtml+=$("#food3").text()+"#"+$(this).find(".con2").val()+"#";
-}
-
-if($(this).find(".con3").val()>0){
-
-shophtml+=$("#food4").text()+"#"+$(this).find(".con3").val()+"#";
-}
-
-if($(this).find(".con4").val()>0){
-
-shophtml+=$("#food5").text()+"#"+$(this).find(".con4").val()+"#";
-}
-
-
-
-
-
-})
-
-shophtml+=myDate.toLocaleString();
-alert(shophtml);
-$(".tott").html(shophtml);
-
-
-})
-
-
-
-
-})
-</script>
-
+ 
  
  
  <style>
@@ -102,7 +33,7 @@ $(".tott").html(shophtml);
   }
 
  p{
-   font-size:22px;
+   font-size:25px;
 }
 
  img{
@@ -114,7 +45,7 @@ $(".tott").html(shophtml);
  min-width: 700px; 
  max-width: 70%; 
  min-height: 200px; 
- max-height: 300px;
+ max-height: 235px; 
  margin: 0 auto; 
  margin-bottom: 30px; 
  background-color: #EEE;
@@ -137,10 +68,10 @@ $(".tott").html(shophtml);
 <ul class="menu">
  <img src="../static/images/panda_logo_good.png" id="logo" align="center">
  <li class="menu"><a href="information.html">Information</a></li>
- <li class="menu"><a href="attractions.html">Hot Activity</a></li>
- <li class="menu"><a href="shop.html">room</a></li>
+ <li class="menu"><a href="attractions.html">Attractions</a></li>
+ <li class="menu"><a href="shop.html">Shop</a></li>
 <li class="menu" id="active"><a href="food.html"><i class="fa fa-caret-left" aria-hidden="true"></i> Back to Foods</a></li>
- <li class="menu"><a href="activity.html">activity</a></li>
+ <li class="menu"><a href="rides.html">Rides</a></li>
  <li class="menu"><a href="index.html">Home</a></li>
 </ul>
 
@@ -159,18 +90,9 @@ $(".tott").html(shophtml);
     <img src = '../static/images/taco.jpg'>
     </div>
     <div class = 'itemTxt'>
-     <h1 id="food1">Tacos <br><font color="#006847">$15.99</font></h1>
+     <h1>Tacos <br><font color="#006847">$15.99</font></h1>
      <p> Care for a seasoned ground beef, tomatoes, cheese, and bell pepper mexican taco? Say no more!  </p>
     </div>
-
-    <div>
-        <div class="contentli">
-<input type="button" name="" id="button1" value="-" class="jian"/>
-<input type="button" name="" id="button2" value="0" class="con"/>
-	<input type="button" value="+" class="jia"/>
-    </div>
-    </div>
-
   </div>
   
    <div class = 'item'>
@@ -178,18 +100,9 @@ $(".tott").html(shophtml);
     <img src = '../static/images/quesadillas.jpeg'>
     </div>
     <div class = 'itemTxt'>
-     <h1 id="food2">Quesadillas <br><font color="#006847	">$19.99</font></h1>
+     <h1>Quesadillas <br><font color="#006847	">$19.99</font></h1>
      <p>  With bread, cheese, and various fillings, it's easy to eat and prepare. This is a broke college students dish of choice. </p>
     </div>
-
-     <div>
-        <div class="contentli">
-<input type="button" name="" id="button3" value="-" class="jian"/>
-<input type="button" name="" id="button4" value="0" class="con1"/>
-	<input type="button" value="+" class="jia"/>
-    </div>
-    </div>
-
   </div>
   
    <div class = 'item'>
@@ -197,18 +110,9 @@ $(".tott").html(shophtml);
     <img src = '../static/images/enchiladas.jpg'>
     </div>
     <div class = 'itemTxt'>
-     <h1 id="food3">Chicken Enchiladas <font color="#006847">$25.99</font></h1>
+     <h1>Chicken Enchiladas <font color="#006847">$25.99</font></h1>
      <p> Enchiladas filled with ground chicken, cheese, spinach, and drizzled with special mexican sauce. </p>
     </div>
-
-     <div>
-        <div class="contentli">
-<input type="button" name="" id="button5" value="-" class="jian"/>
-<input type="button" name="" id="button6" value="0" class="con2"/>
-	<input type="button" value="+" class="jia"/>
-    </div>
-    </div>
-
   </div>
   
    <div class = 'item'>
@@ -216,19 +120,10 @@ $(".tott").html(shophtml);
     <img src = '../static/images/taquitos.jpg'>
     </div>
     <div class = 'itemTxt'>
-     <h1 id="food4">Taquitos <br><font color="#006847">$19.99</font></h1>
+     <h1>Taquitos <br><font color="#006847">$19.99</font></h1>
      <p>If enjoyed Spring Rolls but felt something was missing, we have the thing for you. Taquitos add some spice in 
      your life.</p>
     </div>
-
-    <div>
-        <div class="contentli">
-<input type="button" name="" id="button7" value="-" class="jian"/>
-<input type="button" name="" id="button8" value="0" class="con3"/>
-	<input type="button" value="+" class="jia"/>
-    </div>
-    </div>
-
   </div>
   
 
@@ -237,23 +132,25 @@ $(".tott").html(shophtml);
     <img src = '../static/images/nachos.jpg'>
     </div>
     <div class = 'itemTxt'>
-     <h1 id="food5">Mexican Nachos <font color="#006847">$12.99</font></h1>
+     <h1>Mexican Nachos <font color="#006847">$12.99</font></h1>
      <p>Mouth-watering extra crunchy chilli nachos oozing with piping hot melted cheese. Yum!!    </p>
     </div>
-
-     <div>
-        <div class="contentli">
-<input type="button" name="" id="button9" value="-" class="jian"/>
-<input type="button" name="" id="button10" value="0" class="con4"/>
-	<input type="button" value="+" class="jia"/>
-    </div>
-    </div>
-
   </div>
-
-   <button><a class="foodlink" href="food.html">Return</a></button>
-     <input type="button" name="" id="shop" value="purchase" />
-
+  
+   <div class = 'item'>
+    <div class = 'itemImg'>
+    <img src = '../static/images/burrito.jpg'>
+    </div>
+    <div class = 'itemTxt'>
+     <h1>Burrito <br><font color="#006847">$15.99</font></h1>
+     <p> It's the most handy food to eat, whether you're driving or walking down a street. It fits easily
+     in the palm of your hand and tastes great.</p>
+    </div>
+  </div>
+    
+ 
+  
+  
  </div>
  
   

@@ -114,7 +114,8 @@ img:hover{
 
 <h2>Welcome to our Disney</h2>
 
-<table class="indextable" cellpadding="10" width="1000" bgcolor="#F0F8FF">
+<form action="" method="post">
+    <table class="indextable" cellpadding="10" width="1000" bgcolor="#F0F8FF">
 
 	  <tr>
 	    <th>Customers</th>
@@ -127,15 +128,15 @@ img:hover{
 
 	  <tr>
 	    <td>Ordinary customers</td>
-          <td id="p1">$40</td>
-	    <td><input type="date" class="con3" id="tStartn" value="2018-09-24"/></td>
-         <td><input type="date" id="tEndn" value="2018-09-25"/></td>
+          <td id="p1" name="p1">{{normalprice}}</td>
+	    <td><input type="date" name="normaltime1" class="con3" id="tStartn" value="2018-09-24"/></td>
+         <td><input type="date" name="normaltime2" id="tEndn" value="2018-09-25"/></td>
 	    <td>
 
 
 <li class="contentli">
-<input type="button" name="" id="button1" value="-" class="jian"/>
-<input type="button" name="" id="button2" value="0" class="con"/>
+<input type="button" id="button1" value="-" class="jian"/>
+<input type="text" name="normalnumber" id="button2" value="0" class="con"/>
 <input type="button" value="+" class="jia"/>
         </td>
 
@@ -148,15 +149,15 @@ img:hover{
 
 	  <tr>
 	    <td>VIP customers</td>
-	    <td id="p2">$60</td>
-	      <td><input type="date" id="tStartv" value="2018-09-24"/></td>
-         <td><input type="date" id="tEndv" value="2018-09-25"/></td>
+	    <td id="p2">{{vipprice}}</td>
+	      <td><input type="date" name="viptime1" id="tStartv" value="2018-09-24"/></td>
+         <td><input type="date" name="viptime2" id="tEndv" value="2018-09-25"/></td>
 	    <td>
 
 
 <li class="contentli">
-<input type="button" name="" id="button3" value="-" class="jian"/>
-<input type="button" name="" id="button4" value="0" class="con1"/>
+<input type="button" id="button3" value="-" class="jian"/>
+<input type="text" name="vipnumber" id="button4" value="0" class="con1"/>
 <input type="button" value="+" class="jia"/>
         </td>
 
@@ -165,22 +166,21 @@ img:hover{
 
 <tr>
     <td>Total</td>
-    <td><div>
-<ul class="tott">
-
-</ul>
-</div></td>
+    <td>
+        <div>
+           <ul class="tott"></ul>
+        </div>
+    </td>
     <td></td>
     <td></td>
-<td></td>
+    <td></td>
 </tr>
 
 
-	</table>
-
-<input type="button" name="" id="shop" value="confirm" />
-<input type="button" name="" id="purchase" value="purchase" />
-
+</table>
+    <input type="button" name="" id="shop" value="confirm" />
+    <input type="submit" name="" id="purchase" value="purchase" />
+</form>
 
 
 </body>
