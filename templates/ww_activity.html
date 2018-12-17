@@ -311,36 +311,32 @@ height:auto
 
   <h1 class="title" style='margin-bottom: 15px; font-size: 300%;'>Activity</h1>
 
+                <div class="item">
+                 <div class = 'itemImg'>
 
+                       <img src= activity.path>
+                       </div>
+                 <div class = 'itemTxt'>
+                   <h1> <div class="name">{{ activity.name }} </div></h1>
+                  <div class="content">{{ activity.capacity}}</div>
+					 <p>{{activity.Gap_time }}</p>
 
-   <div class = 'item'>
+                 </div>
+                </div>
 
-    <div class = 'itemImg'>
-     <img src = '../static/images/ferriswheel.jpeg'>
-    </div>
-    <div class = 'itemTxt'>
-     <h1>Wonder Wheel</h1>
-     <p>Maximum capacity:<br>
-         <br>It run every half hours;
-
-
-     </p>
-    </div>
-
-  </div>
-
-
-     <div class = 'item'>
-         <h1>Comments</h1>
-     </div>
+	         <div class = 'item'>
+				    {% for activity in activtys %}
+                        <h1>{{activity. comments}}</h1>
+				    {% endfor %}
+             </div>
 
 
      <div id="table1" class="tp_table1">
 	<h1>Activity Time:</h1>
 
-	<table class="indextable" cellpadding="10" width="1000" bgcolor="#F0F8FF">
+   <table class="indextable" cellpadding="10" width="1000" bgcolor="#F0F8FF">
 
-	  <tr>
+	 <tr>
 	    <th></th>
 	    <th>Current Reservation Number</th>
 	    <th>Current residual capacity</th>
@@ -348,77 +344,21 @@ height:auto
 
 	  </tr>
 
-	  <tr>
-	    <td id="t1">8:00--8:30</td>
-	    <td id="book1">0</td>
-	    <td id="rest1">50</td>
+	    {% for activity in activtys %}
+         <tr>
+	    <td id="t1">time1-time2</td>
+	    <td id="book1">book1</td>
+	    <td id="rest1">rest1</td>
          <td>
 <div class="contentli">
-<input type="button" name="" id="button1" value="-" class="jian"/>
-<input type="button" name="" id="button2" value="0" class="con"/>
+<input type="button" name=""  value="-" class="jian"/>
+<input type="button" name=""  value="0" class="con"/>
 	<input type="button" value="+" class="jia"/><input type="button" name="" id="shop" value="confirm" /></div></td>
 	  </tr>
+		{% endfor %}
 
-	  <tr>
-	    <td id="t2">8:30--9:00</td>
-	    <td id="book2">0</td>
-	    <td id="rest2">50</td>
-         <td>
-<div class="contentli">
-<input type="button" name="" id="button3" value="-" class="jian"/>
-<input type="button" name="" id="button4" value="0" class="con1"/>
-	<input type="button" value="+" class="jia"/><input type="button" name="" id="shop1" value="confirm" /></div></td>
+   </table>
 
-	  </tr>
-
-	<tr>
-    	<td id="t3">9:00--9:30</td>
-    	<td id="book3">0</td>
-    	<td id="rest3">50</td>
-           <td>
-<div class="contentli">
-<input type="button" name="" id="button5" value="-" class="jian"/>
-<input type="button" name="" id="button6" value="0" class="con2"/>
-	<input type="button" value="+" class="jia"/><input type="button" name="" id="shop2" value="confirm" /></div></td>
-
-
- 	 </tr>
-
-
-    	<td id="t4">9:30--10:00</td>
-    	<td id="book4">0</td>
-    	<td id="rest4">50</td>
-          <td>
-<div class="contentli">
-<input type="button" name="" id="button7" value="-" class="jian"/>
-<input type="button" name="" id="button8" value="0" class="con3"/>
-	<input type="button" value="+" class="jia"/><input type="button" name="" id="shop3" value="confirm" /></div></td>
-
- 	 </tr>
-    	<td id="t5">10:30--11:00</td>
-    	<td id="book5">0</td>
-    	<td id="rest5">50</td>
-           <td>
-<div class="contentli">
-<input type="button" name="" id="button9" value="-" class="jian"/>
-<input type="button" name="" id="button10" value="0" class="con4"/>
-	<input type="button" value="+" class="jia"/><input type="button" name="" id="shop4" value="confirm" /></div></td>
-
- 	 </tr>
-
-	 </tr>
-    	<td id="t6">11:00--11:30</td>
-    	<td id="book6">0</td>
-    	<td id="rest6">50</td>
-          <td>
-<div class="contentli">
-<input type="button" name="" id="button11" value="-" class="jian"/>
-<input type="button" name="" id="button12" value="0" class="con5"/>
-	<input type="button" value="+" class="jia"/><input type="button" name="" id="shop5" value="confirm" /></div></td>
-
- 	 </tr>
-
-	</table>
 
 
 	</div>
