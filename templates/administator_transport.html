@@ -84,27 +84,31 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Stop ID:</label><label style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
-                          <input type="text" class="form-control" id="stid">
+                          <input type="text" class="form-control" name="stid">
+                        </div>
+                        <label class="col-sm-3 control-label">Stop name:</label><label style="display:none"></label>
+                        <div class="col-xs-3 col-sm-6">
+                          <input type="text" class="form-control" name="stName">
                         </div>
                         <label class="col-sm-3 control-label">Bus ID:</label><label style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
-                          <input type="text" class="form-control" id="bno_for">
+                          <input type="text" class="form-control" name="bno">
                         </div>
                         <label class="col-sm-3 control-label">time1:</label><label style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
-                          <input type="text" class="form-control" id="time1">
+                          <input type="text" class="form-control" name="time1">
                         </div>
                         <label class="col-sm-3 control-label">time2:</label><label style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
-                          <input type="text" class="form-control" id="time2">
+                          <input type="text" class="form-control" name="time2">
                         </div>
                         <label class="col-sm-3 control-label">time3:</label><label style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
-                          <input type="text" class="form-control" id="time3">
+                          <input type="text" class="form-control" name="time3">
                         </div>
                         <label class="col-sm-3 control-label">time4:</label><label style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
-                          <input type="text" class="form-control" id="time4">
+                          <input type="text" class="form-control" name="time4">
                         </div>
                     </div>                    
                     <div class="modal-footer">
@@ -412,6 +416,7 @@
                             </div>
                             <tr>
                                 <th>Stop ID</th>
+                                <th>Stop Name</th>
                                 <th>Bus ID</th>
                                 <th>time1</th>
                                 <th>time2</th>
@@ -423,12 +428,13 @@
                           <tbody>
                             {% for record in Stop %}
                             <tr>
-                              <td>{{ record.stid }}</td>
+                              <td>{{ record.stID }}</td>
+                              <td>{{ record.stName }}</td>
                               <td>{{ record.bno }}</td>
-                              <td>{{ record.time1 }}</td>
-                              <td>{{ record.time2 }}</td>
-                              <td>{{ record.time3 }}</td>
-                              <td>{{ record.time4 }}</td>
+                              <td>{{ record.Time1 }}</td>
+                              <td>{{ record.Time2 }}</td>
+                              <td>{{ record.Time3 }}</td>
+                              <td>{{ record.Time4 }}</td>
                               <td>
                                 <a data-toggle="modal" data-target="#Stop_modal" style="color:#338FCC" href="">Modify</a>
                                 /
