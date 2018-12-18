@@ -81,3 +81,25 @@ class ActivityCommand():
 
         cursor.close()
         return results
+
+    #删除activity信息
+    def deleteActivity(self,aname):
+        # open database
+        db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
+        cursor = db.cursor()
+        sql = """DELETE from ACTIVITY where aname = '%s'""" % (aname)
+        try:
+            self.cursor.execute(sql)
+            results=cursor.fetchall()
+            sql = """DELETE from ACTIVITY where aname = '%s'"""%(aname)
+
+            cursor.execute(sql)
+            print("成功")
+            db.commit()
+            return 1
+        except:
+            print("不能")
+            db.rollback()
+
+        cursor.close()
+        return results

@@ -297,17 +297,26 @@ def administrator_activity():
         return render_template('administrator_activity.html', Activity=Activity)
     else:
         activityCommand = ActivityCommand()
-        aname=request.form.get('aname')
-        description = request.form.get('description')
-        tnum = request.form.get('tnum')
-        vip = request.form.get('vip')
-        aLength = request.form.get('aLength')
-        stime = request.form.get('stime')
-        etime = request.form.get('etime')
-        if activityCommand.modifyActivity(aname,description,tnum,vip,aLength,stime,etime) == 1:
-            return redirect(url_for('login'))
-        else:
-            return "失败"
+        if (request.form.get('type') == None):  #修改activity
+            aname=request.form.get('aname')
+            description = request.form.get('description')
+            tnum = request.form.get('tnum')
+            vip = request.form.get('vip')
+            aLength = request.form.get('aLength')
+            stime = request.form.get('stime')
+            etime = request.form.get('etime')
+            if activityCommand.modifyActivity(aname,description,tnum,vip,aLength,stime,etime) == 1:
+                   return redirect(url_for('login'))
+            else:
+                   return "失败"
+        else:       #删除
+            aname = request.form.get('aname')
+            if ActivityCommand.deleteActivity(aname)==1:
+                return redirect(url_for('login'))
+            else:
+                return "失败"
+
+
 
 @app.route('/administrator_chief.html',methods=['GET','POST'])
 def administrator_chief():
