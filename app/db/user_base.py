@@ -65,4 +65,27 @@ class VisitorCommand():
         cursor.close()
 
 
+class AdministratorCommand():
+    #查询，和登陆相对应
+    def readAdministrator(self,name,password):
+        # open database
+        db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
+        cursor = db.cursor()
+        sql="""SELECT * FROM ADMINISTRATION WHERE adNo= '%s' and password= '%s'"""%(name,password)
+        try:
+            cursor.execute(sql)
+            results=cursor.fetchall()
+            n=cursor.rownumber
+            print("rownumber>>>>>")
+            print(n)
+            if n == 0:
+                return 0
+            return 1
+        except:
+            import traceback
+            print("呜呜呜呜呜呜呜呜呜呜呜")
+            traceback.print_exc()
+
+        cursor.close()
+
 

@@ -4,22 +4,16 @@
 import pymysql
 import  hashlib
 
-class RoomCommand():
-    #读出当前酒店的房间信息（hname,rno,isEmpty,rprice）,根据rprice分类   对Room table的操作
-    def readRoom(self,hname):
+class Administration():
+    #读取administrator信息传回界面
+    def readAdministrator(self):
         # open database
         db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
         cursor = db.cursor()
-        isempty='1'
-        print(hname)
-        print(isempty)
-        sql = """SELECT COUNT(*),RPRICE FROM ROOM WHERE HNAME='%s'AND ISEMPTY='%s' GROUP BY RPRICE""" %(hname,isempty)
+        sql="""SELECT * FROM AADMINISTRATION"""
         try:
             cursor.execute(sql)
-            results = cursor.fetchall()
-            for result in results:
-                emptynumber=result[1]
-                rprice=result[0]
+            results=cursor.fetchall()
         except:
             import traceback
             traceback.print_exc()
@@ -28,20 +22,21 @@ class RoomCommand():
         cursor.close()
         return results
 
-    #更改或增加Room信息
-    def modifyRoom(self,hname,rno,rprice):
+
+    #更改或增加administrator信息
+    def modifyAdministrator(self,adNo,password,dept):
         # open database
         db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
         cursor = db.cursor()
-        sql = """SELECT * FROM ACTIVITY WHERE hname = '%s' and rno = '%s'"""%(hname,rno)
+        sql = """SELECT * FROM ACTIVITY WHERE adNo = '%s'"""%(adNo)
         try:
             self.cursor.execute(sql)
             results=cursor.fetchall()
             if(results == None):
-                sql = """INSERT INTO Hotel(HNAME,RNO,RPRICE) VALUES ('%s','%s','%s')"""%(hname,rno,rprice)
+                sql = """INSERT INTO ACTIVITY(ADNO,PASSWORD,DEPT) VALUES ('%s','%s','%s','%s')"""%(adNo,password,dept)
                 cursor.execute(sql)
             else:
-                sql = """UPDATE ACTIVITY SET RPRICE='%s' WHERE hname = '%s' and rno = '%s'""" % (rprice,hname,rno)
+                sql = """UPDATE ACTIVITY SET PASSWORD='%s',DEPT='%s' WHERE ADNO='%s'""" % (password,dept,adNo)
                 cursor.execute(sql)
             print("成功")
             db.commit()

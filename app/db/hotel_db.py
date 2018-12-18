@@ -26,3 +26,28 @@ class HotelCommand():
 
         cursor.close()
         return results
+
+    #更改或增加hotel信息
+    def modifyHotel(self,hname,haddr,rNum,htele):
+        # open database
+        db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
+        cursor = db.cursor()
+        sql = """SELECT * FROM ACTIVITY WHERE hname = '%s'"""%(hname)
+        try:
+            self.cursor.execute(sql)
+            results=cursor.fetchall()
+            if(results == None):
+                sql = """INSERT INTO Hotel(HNAME,HADDR,RNUM,HTELE) VALUES ('%s','%s','%s','%s')"""%(hname,haddr,rNum,htele)
+                cursor.execute(sql)
+            else:
+                sql = """UPDATE ACTIVITY SET HADDR='%s',RNUM='%s',HTELE='%s' WHERE HNAME='%s'""" % (haddr,rNum,htele,hname)
+                cursor.execute(sql)
+            print("成功")
+            db.commit()
+            return 1
+        except:
+            print("不能")
+            db.rollback()
+
+        cursor.close()
+        return results
