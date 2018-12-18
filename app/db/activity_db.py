@@ -4,13 +4,33 @@
 import pymysql
 import  hashlib
 
+
 class ActivityCommand():
+    #读取activity booking的信息传回界面
+    def readActivityBook(self,vno):
+        # open database
+        db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
+        cursor = db.cursor()
+        sql = """SELECT * FROM activityBooking WHERE vno='%s'""" % (vno)
+        try:
+            cursor.execute(sql)
+            results=cursor.fetchall()
+        except:
+            import traceback
+            traceback.print_exc()
+            print("error")
+
+        cursor.close()
+        return results
+
+
     #读取activity信息传回界面
     def readActivity(self):
         # open database
         db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
         cursor = db.cursor()
         sql="""SELECT * FROM ACTIVITY"""
+
         try:
             cursor.execute(sql)
             results=cursor.fetchall()
@@ -74,6 +94,28 @@ class ActivityCommand():
             else:
                 sql = """UPDATE ACTIVITY SET aDescription='%s',TNUM='%d',isVIP='%d',aLength='%s',STIME='%s',ETIME='%s' WHERE ANAME='%s'""" % (aDescription, int(tnum), isVIP,aLength, stime, etime, aname)
                 cursor.execute(sql)
+            print("成功")
+            db.commit()
+            return 1
+        except:
+            print("不能")
+            db.rollback()
+
+        cursor.close()
+        return results
+
+    #删除activity信息
+    def deleteActivity(self,aname):
+        # open database
+        db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
+        cursor = db.cursor()
+        sql = """DELETE from ACTIVITY where aname = '%s'""" % (aname)
+        try:
+            self.cursor.execute(sql)
+            results=cursor.fetchall()
+            sql = """DELETE from ACTIVITY where aname = '%s'"""%(aname)
+
+            cursor.execute(sql)
             print("成功")
             db.commit()
             return 1
