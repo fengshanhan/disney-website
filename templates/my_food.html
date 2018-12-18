@@ -26,62 +26,7 @@
 
 
 <body>
- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <!--<h4 class="modal-title" id="myModalLabel">Modify</h4>-->
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" role="form" action="RoleManage.jsp" method="post">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Start time:</label><label style="display:none"></label>
-                        <div class="col-xs-3 col-sm-6">
-                          <input type="date" name="viptime1" id="tStartv" value="2018-09-24"/>
-                        </div>
-                        <label class="col-sm-3 control-label">End Time:</label><label style="display:none"></label>
-                        <div class="col-xs-3 col-sm-6">
-                          <input type="date" name="viptime1" id="tEnd" value="2018-09-25"/>
-                        </div>
 
-                        <!-- <label for="用户名" class="col-sm-2 control-label" style="color:#FF0000;text-align:left;">已存在</label> -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-info" onclick="return Modify()" style="color:white;float: top;">Apply</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal" style="float: top;">Close</button>
-                    </div>
-                   </form>
-                  </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-              </div>
-         </div><!-- /.modal -->
-
-    <div class="modal fade" id="SQL" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <!--<h4 class="modal-title" id="myModalLabel">Modify</h4>-->
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" role="form" action="RoleManage.jsp" method="post">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">SQL:</label><label id="Roleid" style="display:none"></label>
-                        <div class="col-xs-3 col-sm-6">
-                          <input type="text" class="form-control" id="htele">
-                        </div>
-                        <!-- <label for="用户名" class="col-sm-2 control-label" style="color:#FF0000;text-align:left;">已存在</label> -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-info" onclick="return Modify()" style="color:white;float: top;">Apply</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal" style="float: top;">Close</button>
-                    </div>
-                   </form>
-                  </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-              </div>
-         </div><!-- /.modal -->
 
 <!--====================================================
                         PAGE CONTENT
@@ -140,34 +85,30 @@
             <div class="row">
 
                 <!--***** USER INFO *****-->
-                {% for ticket in tickets %}
+                {% for food in foods %}
 
                 <div class="col-md-12">
                     <div class="card form" id="form1">
                         <div class="card-header">
-                            <h3><i class="fa fa-user-circle"></i> {{ticket.no}}</h3>
+                            <h3><i class="fa fa-user-circle"></i> {{food.name}}</h3>
                         </div>
                         <br>
                         <form>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >{{ticket.starttime}}</label>
+                                        <label >{{food.price}}</label>
 
                                     </div>
                                     <div class="form-group">
-                                        <label >{{ticket.endtime}}</label>
-
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label >{{ticket.price}}</label>
+                                        <label >{{food.quantity}}</label>
 
                                     </div>
 
 
+
                                     <div class="form-group">
-                                        <label >{{ticket.type}}</label>
+                                        <label >{{food.time}}</label>
 
                                     </div>
 
@@ -175,10 +116,7 @@
 
                             </div>
 
-                            <button type="reset" class="btn btn-general btn-white"> refund ticket</button>
-
-                            <button type="reset" >  <a data-toggle="modal" data-target="#myModal" style="color:#338FCC" href="">alter ticket</a> </button>
-
+                            <button type="reset" class="btn btn-general btn-white">REFUND</button>
                         </form>
 
 
