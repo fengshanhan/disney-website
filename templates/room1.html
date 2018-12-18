@@ -10,10 +10,59 @@
 <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
+    <script typet="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js">
 
+
+</script>
+</script>
+
+
+    <script type="text/javascript">
+$(function(){
+//这是加1
+$(".contentli").find(".jia").click(function(){
+$(this).prev().val(parseInt($(this).prev().val())+1);
+
+});
+//这是减1
+$(".contentli").find(".jian").click(function(){
+$(this).next().val(parseInt($(this).next().val())-1);
+});
+
+//这里是点击购物车
+$("#shop").click(function(){
+var shophtml="";
+$(".contentli").each(function(i,e){
+if($(this).find(".con").val()>0){
+
+alert($("tStartn").text()+"#"+$("tEndn").text()+"#"+$(this).find(".con").val());
+
+shophtml+="<li><span>"+$("#p1").text()+"#"+$("#tStartn")[0].value+"#"+$("#tEndn")[0].value+"#"+$(this).find(".con").val()+"</span></li>"
+}
+
+if($(this).find(".con1").val()>0){
+shophtml+="<li><span>"+$("#p2").text()+"#"+$("#tStartv")[0].value+"#"+$("#tEndv")[0].value+"#"+$(this).find(".con1").val()+"</span></li>"
+}
+
+
+
+
+})
+
+$(".tott").html(shophtml);
+
+
+})
+
+
+
+
+})
+</script>
 
 
  <style>
+
 
  body {
 
@@ -181,10 +230,10 @@ img{
 
 
          <td>
-             <li class="contentli">
-<input type="button" name="" id="button3" value="-" class="jian"/>
-<input type="button" name="" id="button4" value="0" class="con1"/>
-<input type="button" value="+" class="jia"/>
+            <div class="contentli">
+<input type="button" name=""  value="-" class="jian"/>
+<input type="button" name=""  value="0" class="con"/>
+                <input type="button" value="+" class="jia"/></div>
 
          </td>
 
@@ -196,7 +245,7 @@ img{
 
    </table>
 
-<input type="button" name="" id="shop" value="confirm" />
+     <input type="button" name="" id="shop" value="confirm" />
 </div>
 
 
