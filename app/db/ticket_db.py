@@ -9,7 +9,7 @@ class TicketCommand():
     #查询，显示票价
     def readTicket(self,ttype):
         # open database
-        db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
+        db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
         cursor = db.cursor()
         sql="""SELECT TPRICE FROM TICKET WHERE TTYPE= '%s'"""%(ttype)
         try:
@@ -28,11 +28,11 @@ class TicketCommand():
     #插入，买票时用到
     def insertTicket(self,tno,vno,ttype,tprice,tEdate,tSdate,isRe,isCh):
         # open database
-        db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
+        db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
         cursor = db.cursor()
 
         sql= """INSERT INTO TICKET(TNO,VNO,TTYPE,TPRICE,TEDATE,TSDATE,ISRE,ISCH)
-           VALUES ('%s','%s','%s','%s','%s','%s','%s','%s')"""%(tno,vno,ttype,tprice,tEdate,tSdate,isRe,isCh)
+           VALUES ('%s','%s','%s','%d','%s','%s','%s')"""%(tno,vno,ttype,tprice,tEdate,tSdate,isRe)
         try:
             cursor.execute(sql)
             #print(vno+"购买票号"+tno)
@@ -53,7 +53,7 @@ class TicketCommand():
     #查询当前票号
     def read_ticketnum(self):
         # open database
-        db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
+        db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
         cursor = db.cursor()
 
         sql="""SELECT * FROM TICKET"""

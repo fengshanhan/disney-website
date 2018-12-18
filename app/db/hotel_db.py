@@ -8,7 +8,7 @@ class HotelCommand():
     #读取hotel信息传回界面
     def readHotel(self):
         # open database
-        db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
+        db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
         cursor = db.cursor()
         sql="""SELECT * FROM HOTEL"""
         try:
@@ -30,7 +30,7 @@ class HotelCommand():
     #更改或增加hotel信息
     def modifyHotel(self,hname,haddr,rNum,htele):
         # open database
-        db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
+        db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
         cursor = db.cursor()
         sql = """SELECT * FROM HOTEL WHERE hname = '%s'"""%(hname)
         try:

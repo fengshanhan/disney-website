@@ -8,7 +8,7 @@ class Administration():
     #读取administrator信息传回界面
     def readAdministrator(self):
         # open database
-        db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
+        db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
         cursor = db.cursor()
         sql="""SELECT * FROM ADMINISTRATION"""
         try:
@@ -26,7 +26,7 @@ class Administration():
     #更改或增加administrator信息
     def modifyAdministrator(self,adNo,psw,dept):
         # open database
-        db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
+        db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
         cursor = db.cursor()
         sql = """SELECT * FROM ADMINISTRATION WHERE adNo = '%s'"""%(adNo)
         try:
