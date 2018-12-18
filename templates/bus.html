@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
      <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet">
 <head>
 
 <title>InSaini World</title>
@@ -34,7 +34,7 @@ myselect1.options[index1].text;
 
 $("#exampleSelect3").empty();
 
-alert(myselect.options[index].text+"#"+myselect1.options[index1].text);
+alert(myselect.options[index].text+"#"+myselect1.options[index1].text+"#"+"Please choose the departure time.");
 
 <!--{% for time in times %}-->
 
@@ -92,9 +92,9 @@ $(".tott").html(shophtml);
 <ul class="menu">
     <img src="../static/images/panda_logo_good.png" id="logo" align="center">
     <li class="menu">
-    <li><a href="information.html">Information</a></li>
+    <li><a href="bus.html">Bus</a></li>
     <li class="menu"><a href="attractions.html">Hot Activity</a></li>
-    <li class="menu"><a href="shop.html">Hotel</a></li>
+    <li class="menu"><a href="hotel.html">Hotel</a></li>
     <li class="menu"><a href="food.html">Food</a></li>
     <li class="menu"><a href="activity.html">Activity</a></li>
     <li class="menu"><a href="ticket.html">Ticket</a></li>
@@ -102,62 +102,40 @@ $(".tott").html(shophtml);
 </ul>
 
 
-<div class="sideright">
-				<div class="index">
-					<form action="" method="post">
+			  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvVMuqyO4cxRfcUDdMCprIPSZLwcgGXSQ&callback=myMap"></script>
 
 
-                 <div class="form-group">
-                                        <label for="exampleSelect1">Select your Starting station</label>
-                                        <select class="form-control" id="exampleSelect1">
-                                            <option value="">Stop</option>
-                                            <option value="AR">stop1</option>
-                                            <option value="AU">stop2</option>
-                                            <option value="AT">stop3</option>
-                                            <option value="BY">stop4</option>
-                                            <option value="BE">stop5</option>
-                                            <option value="BA">stop6</option>
-                                            <option value="BR">stop7</option>
-                                            <option value="BG">stop8</option>
-                                            <option value="CA">stop9</option>
-
-                                        </select>
-                                    </div><br><br>
-
-                        <div class="form-group">
-                                        <label for="exampleSelect1">Select your Terminus station</label>
-                                        <select class="form-control" id="exampleSelect2">
-                                            <option value="">Stop</option>
-                                            <option value="AR">stop1</option>
-                                            <option value="AU">stop2</option>
-                                            <option value="AT">stop3</option>
-                                            <option value="BY">stop4</option>
-                                            <option value="BE">stop5</option>
-                                            <option value="BA">stop6</option>
-                                            <option value="BR">stop7</option>
-                                            <option value="BG">stop8</option>
-                                            <option value="CA">stop9</option>
-
-                                        </select>
-                                    </div><br><br>
 
 
-                          <input type="button" name="" id="shop" value="confirm" /><br><br>
+                        <table class="indextable" cellpadding="10" width="1000" bgcolor="#F0F8FF">
 
-                         <div class="form-group">
-                                        <label for="exampleSelect1">Choose the time of departure</label>
-                                        <select class="form-control" id="exampleSelect3">
-                                            <option value="">please chose stop first</option>
+	 <tr>
+	    <th>stop name</th>
+	    <th>t1</th>
+	    <th>t2</th>
+        <th>t3</th>
+         <th>t4</th>
+
+	  </tr>
+
+	    {% for activity in activities %}
+         <tr>
+	    <td id="t1">{{activity[5]--activity[6]}}</td>
+	    <td id="book1">{{activity[8]}}</td>
+	    <td id="rest1">rest1</td>
+         <td>
+<div class="contentli">
+<input type="button" name=""  value="-" class="jian"/>
+<input type="button" name=""  value="0" class="con"/>
+	<input type="button" value="+" class="jia"/><input type="button" name="" id="shop" value="confirm" /></div></td>
+	  </tr>
+		{% endfor %}
+
+   </table>
 
 
-                                        </select>
-                                    </div>
 
 
-					</form>
-
-				</div>
-			</div>
 
 
 </body>

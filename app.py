@@ -10,9 +10,8 @@ from app.db.room_db import RoomCommand
 from app.db.activity_db import ActivityCommand
 from app.data import user_info
 from app.db.administrator_db import Administration
-from app.db.bus_db import busCommand
-from app.db.stop_db import stopCommand
-import data.user_info.User
+from app.db.bus_db import BusCommand
+from app.data.user_info  import User
 
 app = Flask(__name__)
 #user=user_info() #全局记录下当前登陆用户的信息
@@ -187,6 +186,8 @@ def activity_ww(activityname):
         activity=activitycommand.readActivity_ww(activityname)
         comments=activitycommand.readComment(activityname)
         return render_template('/ww_activity.html', activity=activity,comments=comments)
+    else:
+        pass
 
 
 @app.route('/ticket.html',methods=['GET','POST'])

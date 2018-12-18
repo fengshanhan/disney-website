@@ -101,77 +101,40 @@ $(".tott").html(shophtml);
 
 </ul>
 
-     <div id="map" style="width:100%; height:700px;"></div>
-					<script>
-    					function myMap() {
-    					  var mapCanvas = document.getElementById("map");
-    					  var mapOptions = {
-    						center: new google.maps.LatLng( 33.770819, -84.551607), 
-    						zoom: 21,
-    						mapTypeId: 'satellite'
-    					  }
-    					  var map = new google.maps.Map(mapCanvas, mapOptions);
-    					}
-					</script>
+
 			  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvVMuqyO4cxRfcUDdMCprIPSZLwcgGXSQ&callback=myMap"></script>
 
 
-<div class="sideright">
-				<div class="index">
-					<form action="" method="post">
 
 
-                 <div class="form-group">
-                                        <label for="exampleSelect1">Select your Starting station</label>
-                                        <select class="form-control" id="exampleSelect1">
-                                            <option value="">Stop</option>
-                                            <option value="AR">stop1</option>
-                                            <option value="AU">stop2</option>
-                                            <option value="AT">stop3</option>
-                                            <option value="BY">stop4</option>
-                                            <option value="BE">stop5</option>
-                                            <option value="BA">stop6</option>
-                                            <option value="BR">stop7</option>
-                                            <option value="BG">stop8</option>
-                                            <option value="CA">stop9</option>
+                        <table class="indextable" cellpadding="10" width="1000" bgcolor="#F0F8FF">
 
-                                        </select>
-                                    </div><br><br>
+	 <tr>
+	    <th>stop name</th>
+	    <th>Current Reservation Number</th>
+	    <th>Current residual capacity</th>
+        <th>Book</th>
 
-                        <div class="form-group">
-                                        <label for="exampleSelect1">Select your Terminus station</label>
-                                        <select class="form-control" id="exampleSelect2">
-                                            <option value="">Stop</option>
-                                            <option value="AR">stop1</option>
-                                            <option value="AU">stop2</option>
-                                            <option value="AT">stop3</option>
-                                            <option value="BY">stop4</option>
-                                            <option value="BE">stop5</option>
-                                            <option value="BA">stop6</option>
-                                            <option value="BR">stop7</option>
-                                            <option value="BG">stop8</option>
-                                            <option value="CA">stop9</option>
+	  </tr>
 
-                                        </select>
-                                    </div><br><br>
+	    {% for activity in activities %}
+         <tr>
+	    <td id="t1">{{activity[5]--activity[6]}}</td>
+	    <td id="book1">{{activity[8]}}</td>
+	    <td id="rest1">rest1</td>
+         <td>
+<div class="contentli">
+<input type="button" name=""  value="-" class="jian"/>
+<input type="button" name=""  value="0" class="con"/>
+	<input type="button" value="+" class="jia"/><input type="button" name="" id="shop" value="confirm" /></div></td>
+	  </tr>
+		{% endfor %}
+
+   </table>
 
 
-                          <input type="button" name="" id="shop" value="confirm" /><br><br>
-
-                         <div class="form-group">
-                                        <label for="exampleSelect1">Choose the time of departure</label>
-                                        <select class="form-control" id="exampleSelect3">
-                                            <option value="">please chose stop first</option>
 
 
-                                        </select>
-                                    </div>
-
-
-					</form>
-
-				</div>
-			</div>
 
 
 </body>
