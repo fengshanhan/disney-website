@@ -27,3 +27,28 @@ class RoomCommand():
 
         cursor.close()
         return results
+
+    #更改或增加Room信息
+    def modifyRoom(self,hname,rno,rprice):
+        # open database
+        db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
+        cursor = db.cursor()
+        sql = """SELECT * FROM ACTIVITY WHERE hname = '%s' and rno = '%s'"""%(hname,rno)
+        try:
+            self.cursor.execute(sql)
+            results=cursor.fetchall()
+            if(results == None):
+                sql = """INSERT INTO Hotel(HNAME,RNO,RPRICE) VALUES ('%s','%s','%s')"""%(hname,rno,rprice)
+                cursor.execute(sql)
+            else:
+                sql = """UPDATE ACTIVITY SET RPRICE='%s' WHERE hname = '%s' and rno = '%s'""" % (rprice,hname,rno)
+                cursor.execute(sql)
+            print("成功")
+            db.commit()
+            return 1
+        except:
+            print("不能")
+            db.rollback()
+
+        cursor.close()
+        return results

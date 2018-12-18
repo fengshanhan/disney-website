@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
 
-    <title>Chied Administrator</title>
+    <title>Chief Administrator</title>
     <link rel="shortcut icon" href="img/favicon.ico">
     
     <!-- global stylesheets -->
@@ -36,9 +36,17 @@
             <div class="modal-body">
                 <form class="form-horizontal" role="form" action="RoleManage.jsp" method="post">
                     <div class="form-group">
+                        <label class="col-sm-3 control-label">ID:</label><label style="display:none"></label>
+                        <div class="col-xs-3 col-sm-6">
+                          <input type="text" class="form-control" name="adNo">
+                        </div>
+                        <label class="col-sm-3 control-label">password:</label><label style="display:none"></label>
+                        <div class="col-xs-3 col-sm-6">
+                          <input type="text" class="form-control" name="password">
+                        </div>
                         <label class="col-sm-3 control-label">Department:</label><label id="Roleid" style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
-                            <select>
+                            <select name="dept">
                                 <option value="1">Chief Department</option>
                                 <option value="2">Hotel Department</option>
                                 <option value="3">Transport Department</option>
@@ -258,6 +266,19 @@
                     <div class="card card-c2">
                         <table class="table table-hover">
                           <thead>
+                           <div class="dropdown pull-right menu-sett-card">
+                                <a id="notifications_top" class="nav-link" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-ellipsis-v men"></i>
+                                </a>
+                                <ul aria-labelledby="notifications" class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item nav-link" data-toggle="modal" data-target="#myModal" style="color:#338FCC" href="">Add</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" data-toggle="modal" data-target="#SQL" style="color:#338FCC" href="">SQL</a>
+                                    </li>
+                                </ul>
+                            </div>
                             <div class="dropdown pull-right menu-sett-card"> 
                                 <ul aria-labelledby="notifications" class="dropdown-menu">
                                     <li>

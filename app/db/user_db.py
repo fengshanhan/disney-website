@@ -1,6 +1,8 @@
 from app.db.user_base import VisitorCommand
+from app.db.user_base import AdministratorCommand
 
 visitorCommand=VisitorCommand()
+administratorCommand=AdministratorCommand()
 
 class Visitor():
     # 注册
@@ -23,6 +25,17 @@ class Visitor():
     # 登陆
     def login(self,username, password):
         if visitorCommand.readVisitor(username, password) == 1:
+            print("登陆成功")
+            return 1
+        else:
+            print("登陆失败")
+            return 0
+
+
+class Administrator():
+    # 登陆
+    def login(self,username, password):
+        if administratorCommand.readAdministrator(username, password) == 1:
             print("登陆成功")
             return 1
         else:
