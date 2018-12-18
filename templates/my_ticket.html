@@ -44,26 +44,26 @@
             <hr>
             <!-- Sidebar Navidation Menus-->
             <ul class="list-unstyled">
-                <li class="active"> <a href="index.html"><i class="icon-home"></i>Information</a></li>
+                <li class="active"> <a href="my.html"><i class="icon-home"></i>Information</a></li>
                 <li><a href="#apps" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>My booking</a>
                     <ul id="apps" class="collapse list-unstyled">
                         <li><a href="my_ticket.html">Ticket</a></li>
                         <li><a href="my_activity.html">Activity</a></li>
-                        <li><a href="my_hotel.html">Hotel</a></li>
-                        <li><a href="my_food.html">Food</a></li>
-                        <li><a href="my_bus.html">Bus</a></li>
+                        <li><a href="media.html">Hotel</a></li>
+                        <li><a href="invoice.html">Food</a></li>
+                        <li><a href="invoice.html">Bus</a></li>
 
                     </ul>
                 </li>
 
                 <li><a href="#forms" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-building-o"></i>wallet </a>
                     <ul id="forms" class="collapse list-unstyled">
-                        <li><a href="basic-form.html">Records of consumption</a></li>
+                        <li><a href="basic-form.html">Basic Form</a></li>
                         <li><a href="form-layouts.html">Form Layouts</a></li>
                     </ul>
                 </li>
-                <li> <a href="maps.html"> <i class="fa fa-map-o"></i>Maps </a></li>
-               
+
+
                 <li> <a href="tables.html"> <i class="icon-grid"></i>Tables </a></li>
                 <li><a href="#elements" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-globe"></i>UI Elements </a>
                     <ul id="elements" class="collapse list-unstyled">
@@ -79,27 +79,40 @@
             </ul>
         </nav>
 
-        <div class="content-inner chart-cont">
+       <div class="content-inner chart-cont">
 
             <!--***** CONTENT *****-->
             <div class="row">
 
                 <!--***** USER INFO *****-->
+                {% for ticket in tickets %}
+
                 <div class="col-md-12">
                     <div class="card form" id="form1">
                         <div class="card-header">
-                            <h3><i class="fa fa-user-circle"></i> User Info</h3>
+                            <h3><i class="fa fa-user-circle"></i> {{ticket.no}}</h3>
                         </div>
                         <br>
                         <form>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >Full Name</label>
+                                        <label >{{ticket.starttime}}</label>
 
                                     </div>
                                     <div class="form-group">
-                                        <label >Email address</label>
+                                        <label >{{ticket.endtime}}</label>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label >{{ticket.price}}</label>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label >{{ticket.type}}</label>
 
                                     </div>
 
@@ -107,15 +120,18 @@
 
                             </div>
 
-                            <button type="submit" class="btn btn-general btn-blue mr-2">Submit</button>
                             <button type="reset" class="btn btn-general btn-white">Cancel</button>
                         </form>
 
 
             </div>
 
+
+                 {% end for %}
+
+
+
         </div>
-    </div>
     <!--Global Javascript -->
     <script src="../static/js/jquery.min.js"></script>
     <script src="../static/js/popper/popper.min.js"></script>
