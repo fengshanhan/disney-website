@@ -174,5 +174,14 @@ def activity():
     else:
         pass
 
+@app.route('/ww_activity/<activityname>.html',methods=['GET','POST'])
+def activity_ww(activityname):
+    if request.method == 'GET':
+        activitycommand=ActivityCommand()
+        activity=activitycommand.readActivity_ww(activityname)
+        comments=activitycommand.readComment(activityname)
+        return render_template('/ww_activity.html', activity=activity,comments=comments)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

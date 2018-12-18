@@ -317,16 +317,16 @@ height:auto
                        <img src= activity.path>
                        </div>
                  <div class = 'itemTxt'>
-                   <h1> <div class="name">{{ activity.name }} </div></h1>
-                  <div class="content">{{ activity.capacity}}</div>
-					 <p>{{activity.Gap_time}}</p>
+                   <h1> <div class="name">{{ activity[0] }} </div></h1>
+                  <div class="content">{{ activity[2] }}</div>
+					 <p>{{ activity[4] }}</p>
 
                  </div>
                 </div>
 
 	         <div class = 'item'>
-				    {% for activity in activities %}
-                        <h1>{{activity. comments}}</h1>
+				    {% for comment in comments %}
+                        <h1>{{comment[0]}}</h1>
 				    {% endfor %}
              </div>
 
@@ -344,10 +344,10 @@ height:auto
 
 	  </tr>
 
-	    {% for activity in activtys %}
+	    {% for activity in activities %}
          <tr>
-	    <td id="t1">time1-time2</td>
-	    <td id="book1">book1</td>
+	    <td id="t1">{{activity[5]--activity[6]}}</td>
+	    <td id="book1">{{activity[8]}}</td>
 	    <td id="rest1">rest1</td>
          <td>
 <div class="contentli">
@@ -355,7 +355,7 @@ height:auto
 <input type="button" name=""  value="0" class="con"/>
 	<input type="button" value="+" class="jia"/><input type="button" name="" id="shop" value="confirm" /></div></td>
 	  </tr>
-		{% end for %}
+		{% endfor %}
 
    </table>
 
