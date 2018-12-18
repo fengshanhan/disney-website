@@ -10,6 +10,8 @@ from app.db.room_db import RoomCommand
 from app.db.activity_db import ActivityCommand
 from app.data import user_info
 from app.db.administrator_db import Administration
+from app.db.bus_db import busCommand
+from app.db.stop_db import stopCommand
 
 app = Flask(__name__)
 #user=user_info() #全局记录下当前登陆用户的信息
@@ -268,7 +270,7 @@ def ticket():
 #######################################################
 
 @app.route('/login_administrator.html',methods=['GET','POST'])
-def login():
+def login_administrator():
     if request.method == 'GET':
         return render_template("login_administrator.html")
     else:
@@ -288,7 +290,7 @@ def login():
 
 
 @app.route('/administrator_activity.html',methods=['GET','POST'])
-def login():
+def administrator_activity():
     if request.method == 'GET':
         activityCommand = ActivityCommand()
         Activity= activityCommand.readActivity()
@@ -299,15 +301,16 @@ def login():
         description = request.form.get('description')
         tnum = request.form.get('tnum')
         vip = request.form.get('vip')
+        aLength = request.form.get('aLength')
         stime = request.form.get('stime')
         etime = request.form.get('etime')
-        if activityCommand.modifyActivity(aname,description,tnum,vip,stime,etime) == 1:
+        if activityCommand.modifyActivity(aname,description,tnum,vip,aLength,stime,etime) == 1:
             return redirect(url_for('login'))
         else:
             return "失败"
 
 @app.route('/administrator_chief.html',methods=['GET','POST'])
-def login():
+def administrator_chief():
     if request.method == 'GET':
         administrationCommand = Administration()
         administration = administrationCommand.readAdministrator()
@@ -324,97 +327,13 @@ def login():
 
 
 @app.route('/administrator_hotel.html',methods=['GET','POST'])
-def login():
+def administrator_hotel():
     if request.method == 'GET':
         hotelcommand = HotelCommand()
         hotel = hotelcommand.readHotel()
-        return render_template('administrator_hotel.html', Hotel=hotel)
-    else:
-        if (request.form.get('rno') != None):      #修改的hotel
-            hotelCommand = HotelCommand()
-            hname=request.form.get('hname')
-            haddr = request.form.get('haddr')
-            rNum = request.form.get('rNum')
-            htele = request.form.get('htele')
-            if hotelCommand.modifyHotel(hname,haddr,rNum,htele) == 1:
-                return redirect(url_for('login'))
-            else:
-                return "失败"
-        else:                                      #修改的Room
-            roomCommand =RoomCommand()
-            hname = request.form.get('hname')
-            rno = request.form.get('rno')
-            rprice = request.form.get('rprice')
-            if roomCommand.modifyRoom(hname,rno,rprice) == 1:
-                return redirect(url_for('login'))
-            else:
-                return "失败"
-#######################################################
-################## administrator ######################
-#######################################################
-
-@app.route('/login_administrator.html',methods=['GET','POST'])
-def login():
-    if request.method == 'GET':
-        return render_template("login_administrator.html")
-    else:
-        administrator=Administrator()
-        administratorCommand=AdministratorCommand()
-        name=request.form.get('name')
-        password=request.form.get('password')
-        if administrator.login(name,password) == 1:
-            #可以登陆
-            # 获取当前的用户ID
-            # 这里需要从数据库中读取name为当前name的vno，然后存储到user_info中
-            no = administratorCommand.read_for_no(name)
-            user_info.User.user_no = no
-            return redirect(url_for('map'))
-        else:
-            return "不能登陆"
-
-
-@app.route('/administrator_activity.html',methods=['GET','POST'])
-def login():
-    if request.method == 'GET':
-        activityCommand = ActivityCommand()
-        Activity= activityCommand.readActivity()
-        return render_template('administrator_activity.html', Activity=Activity)
-    else:
-        activityCommand = ActivityCommand()
-        aname=request.form.get('aname')
-        description = request.form.get('description')
-        tnum = request.form.get('tnum')
-        vip = request.form.get('vip')
-        stime = request.form.get('stime')
-        etime = request.form.get('etime')
-        if activityCommand.modifyActivity(aname,description,tnum,vip,stime,etime) == 1:
-            return redirect(url_for('login'))
-        else:
-            return "失败"
-
-@app.route('/administrator_chief.html',methods=['GET','POST'])
-def login():
-    if request.method == 'GET':
-        administrationCommand = Administration()
-        administration = administrationCommand.readAdministrator()
-        return render_template('administrator_chief.html', administration=administration)
-    else:
-        administration = Administration()
-        adNo=request.form.get('adNo')
-        password = request.form.get('password')
-        dept = request.form.get('dept')
-        if administration.modifyAdministrator(adNo,password,dept) == 1:
-            return redirect(url_for('login'))
-        else:
-            return "失败"
-
-
-@app.route('/administrator_hotel.html',methods=['GET','POST'])
-def login():
-    if request.method == 'GET':
-        hotelcommand = HotelCommand()
-        hotel = hotelcommand.readHotel()
-        return render_template('administrator_hotel.html', Hotel=hotel)
+        roomcommand = RoomCommand()
+        room = roomcommand.readHotel()
+        return render_template('administrator_hotel.html', Hotel=hotel,Room=room)
     else:
         if (request.form.get('rno') != None):      #修改的hotel
             hotelCommand = HotelCommand()
@@ -437,6 +356,40 @@ def login():
                 return "失败"
 
 
+@app.route('/administrator_transport.html',methods=['GET','POST'])
+def administrator_hotel():
+    if request.method == 'GET':
+        busCommand = BusCommand()
+        bus = busCommand.readHotel()
+        stopCommand = StopCommand()
+        stop = stopCommand.readHotel()
+        return render_template('administrator_transport.html', Bus=bus,Stop=stop)
+    else:
+        if (request.form.get('stid') == None):      #修改的hotel
+            busCommand = BusCommand()
+            bno=request.form.get('bno')
+            bStart = request.form.get('bStart')
+            bEnd = request.form.get('bEnd')
+            sdes = request.form.get('sdes')
+            edes = request.form.get('edes')
+            Total_seat = request.form.get('Total_seat')
+            if busCommand.modifyBus(bno,bStart,sdes,edes,Total_seat) == 1:
+                return redirect(url_for('login'))
+            else:
+                return "失败"
+        else:                                      #修改的Room
+            stopCommand =StopCommand()
+            stid = request.form.get('stid')
+            bno = request.form.get('bno')
+            stName = request.form.get('stName')
+            time1 = request.form.get('time1')
+            time2 = request.form.get('time2')
+            time3 = request.form.get('time3')
+            time4 = request.form.get('time4')
+            if stopCommand.modifyStop(stid,bno,stName,time1,time2,time3,time4) == 1:
+                return redirect(url_for('login'))
+            else:
+                return "失败"
 
 if __name__ == '__main__':
     app.run(debug=True)

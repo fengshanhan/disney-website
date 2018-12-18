@@ -38,24 +38,28 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Bus id:</label><label style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
-                          <input type="text" class="form-control" id="bno">
+                          <input type="text" class="form-control" name="bno">
                         </div>
                         <!-- <label for="用户名" class="col-sm-2 control-label" style="color:#FF0000;text-align:left;">已存在</label> -->
                         <label class="col-sm-3 control-label">Start time:</label><label style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
-                          <input type="text" class="form-control" id="btime">
+                          <input type="text" class="form-control" name="bStart">
+                        </div>
+                        <label class="col-sm-3 control-label">End time:</label><label style="display:none"></label>
+                        <div class="col-xs-3 col-sm-6">
+                          <input type="text" class="form-control" name="bEnd">
                         </div>
                         <label class="col-sm-3 control-label">Start Destination:</label><label style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
-                          <input type="text" class="form-control" id="sdes">
+                          <input type="text" class="form-control" name="sdes">
                         </div>
                         <label class="col-sm-3 control-label">End Destination:</label><label style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
-                          <input type="text" class="form-control" id="edes">
+                          <input type="text" class="form-control" name="edes">
                         </div>
                         <label class="col-sm-3 control-label">Seats Amount:</label><label style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
-                          <input type="text" class="form-control" id="Total_seat">
+                          <input type="text" class="form-control" name="Total_seat">
                         </div>
                     </div>                    
                     <div class="modal-footer">
@@ -356,6 +360,7 @@
                             <tr>
                               <th>Bus ID</th>
                               <th>Start time</th>
+                                <th>End time</th>
                               <th>Start Destination</th>
                               <th>End Destination</th>
                               <th>Total seat</th>
@@ -366,10 +371,11 @@
                             {% for record in Bus %}
                             <tr>
                                 <td>{{ record.bno }}</td>
-                                <td>{{ record.btime }}</td>
-                                <td>{{ record.sdes }}</td>
-                                <td>{{ record.edes }}</td>
-                                <td>{{ record.Total_seat }}</td>
+                                <td>{{ record.bStart }}</td>
+                                <td>{{ record.bEnd }}</td>
+                                <td>{{ record.sDest }}</td>
+                                <td>{{ record.eDest }}</td>
+                                <td>{{ record.totalSeat }}</td>
                                 <td>
                                 <a data-toggle="modal" data-target="#Bus_modal" style="color:#338FCC" href="">Modify</a>
                                 /

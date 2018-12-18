@@ -10,7 +10,7 @@ class Administration():
         # open database
         db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
         cursor = db.cursor()
-        sql="""SELECT * FROM AADMINISTRATION"""
+        sql="""SELECT * FROM ADMINISTRATION"""
         try:
             cursor.execute(sql)
             results=cursor.fetchall()
@@ -24,19 +24,19 @@ class Administration():
 
 
     #更改或增加administrator信息
-    def modifyAdministrator(self,adNo,password,dept):
+    def modifyAdministrator(self,adNo,psw,dept):
         # open database
         db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
         cursor = db.cursor()
-        sql = """SELECT * FROM ACTIVITY WHERE adNo = '%s'"""%(adNo)
+        sql = """SELECT * FROM ADMINISTRATION WHERE adNo = '%s'"""%(adNo)
         try:
             self.cursor.execute(sql)
             results=cursor.fetchall()
             if(results == None):
-                sql = """INSERT INTO ACTIVITY(ADNO,PASSWORD,DEPT) VALUES ('%s','%s','%s','%s')"""%(adNo,password,dept)
+                sql = """INSERT INTO ADMINISTRATION(ADNO,psw,DEPT) VALUES ('%s','%s','%s')"""%(adNo,psw,dept)
                 cursor.execute(sql)
             else:
-                sql = """UPDATE ACTIVITY SET PASSWORD='%s',DEPT='%s' WHERE ADNO='%s'""" % (password,dept,adNo)
+                sql = """UPDATE ADMINISTRATION SET psw='%s',DEPT='%s' WHERE ADNO='%s'""" % (psw,dept,adNo)
                 cursor.execute(sql)
             print("成功")
             db.commit()

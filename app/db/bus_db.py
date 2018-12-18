@@ -4,21 +4,16 @@
 import pymysql
 import  hashlib
 
-class HotelCommand():
-    #读取hotel信息传回界面
-    def readHotel(self):
+class BusCommand():
+    #读取Bus信息传回界面
+    def readBus(self):
         # open database
         db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
         cursor = db.cursor()
-        sql="""SELECT * FROM HOTEL"""
+        sql = """SELECT * FROM BUS"""
         try:
             cursor.execute(sql)
-            results=cursor.fetchall()
-            for result in results:
-                hname=result[0]
-                haddr=result[1]
-                rnum=result[2]
-                htele=result[3]
+            results = cursor.fetchall()
         except:
             import traceback
             traceback.print_exc()
@@ -27,20 +22,20 @@ class HotelCommand():
         cursor.close()
         return results
 
-    #更改或增加hotel信息
-    def modifyHotel(self,hname,haddr,rNum,htele):
+    #更改或增加bus信息
+    def modifyBus(self,bno,bStart,bEnd,sDest,eDest,totalSeat):
         # open database
         db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
         cursor = db.cursor()
-        sql = """SELECT * FROM HOTEL WHERE hname = '%s'"""%(hname)
+        sql = """SELECT * FROM BUS WHERE bno = '%s'"""%(bno)
         try:
             self.cursor.execute(sql)
             results=cursor.fetchall()
             if(results == None):
-                sql = """INSERT INTO Hotel(HNAME,HADDR,RNUM,HTELE) VALUES ('%s','%s','%d','%s')"""%(hname,haddr,int(rNum),htele)
+                sql = """INSERT INTO BUS(bno,bStart,bEnd,sDest,eDest,totalSeat) VALUES ('%s','%s','%s','%s','%s','%d')"""%(bno,bStart,bEnd,sDest,eDest,int(totalSeat))
                 cursor.execute(sql)
             else:
-                sql = """UPDATE HOTEL SET HADDR='%s',RNUM='%d',HTELE='%s' WHERE HNAME='%s'""" % (haddr,int(rNum),htele,hname)
+                sql = """UPDATE BUS SET bStart='%s',bEnd='%s',sDest='%s',eDest='%s',totalSeat='%d' WHERE bno='%s'""" % (bStart,bEnd,sDest,eDest,int(totalSeat),bno)
                 cursor.execute(sql)
             print("成功")
             db.commit()

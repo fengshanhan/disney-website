@@ -52,6 +52,10 @@
                         <div class="col-xs-3 col-sm-6">
                           <input type="text" class="form-control" name="vip">
                         </div>
+                        <label class="col-sm-3 control-label">Time per trip:</label><label style="display:none"></label>
+                        <div class="col-xs-3 col-sm-6">
+                          <input type="text" class="form-control" name="aLength">
+                        </div>
                         <label class="col-sm-3 control-label">Start time:</label><label style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
                           <input type="text" class="form-control" name="stime">
@@ -320,24 +324,26 @@
                                 </ul>
                             </div>
                             <tr>
-                              <th>Name</th>
-                              <th>Description</th>
-                              <th>Total num</th>
-                              <th>Is VIP</th>
-                              <th>Start time</th>
-                              <th>End time</th>
-                              <th>Operations</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Total num</th>
+                                <th>Is VIP</th>
+                                <th>Time per trip</th>
+                                <th>Start time</th>
+                                <th>End time</th>
+                                <th>Operations</th>
                             </tr>
                           </thead>
                           <tbody>
                             {% for record in Activity %}
                             <tr>
                               <td>{{ record.aname }}</td>
-                              <td>{{ record.description }}</td>
+                              <td>{{ record.aDescription }}</td>
                               <td>{{ record.tnum }}</td>
-                              <td>{{ record.vip }}</td>
-                              <td>{{ record.stime }}</td>
-                              <td>{{ record.etime }}</td>
+                              <td>{{ record.isVIP }}</td>
+                                <td>{{ record.aLength }}</td>
+                              <td>{{ record.sTime }}</td>
+                              <td>{{ record.eTime }}</td>
                               <td>
                                 <a data-toggle="modal" data-target="#myModal" style="color:#338FCC" href="">Modify</a>
                                 /

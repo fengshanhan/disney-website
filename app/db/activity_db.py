@@ -58,7 +58,7 @@ class ActivityCommand():
 
 
     #更改或增加activity信息
-    def modifyActivity(self,aname,description,tnum,vip,stime,etime):
+    def modifyActivity(self,aname,aDescription,tnum,isVIP,aLength,stime,etime):
         # open database
         db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
         cursor = db.cursor()
@@ -67,10 +67,10 @@ class ActivityCommand():
             self.cursor.execute(sql)
             results=cursor.fetchall()
             if(results == None):
-                sql = """INSERT INTO ACTIVITY(ANAME,DESCRIPTION,TNUM,VIP,STIME,ETIME) VALUES ('%s','%s','%s','%s','%s','%s')"""%(aname,description,tnum,vip,stime,etime)
+                sql = """INSERT INTO ACTIVITY(ANAME,aDescription,TNUM,isVIP,aLength,STIME,ETIME) VALUES ('%s','%s','%d','%c','%s','%s','%s')"""%(aname,aDescription,int(tnum),isVIP,aLength,stime,etime)
                 cursor.execute(sql)
             else:
-                sql = """UPDATE ACTIVITY SET DESCRIPTION='%s',TNUM='%s',VIP='%s',STIME='%s',ETIME='%s' WHERE ANAME='%s'""" % (description, tnum, vip, stime, etime, aname)
+                sql = """UPDATE ACTIVITY SET aDescription='%s',TNUM='%s',isVIP='%d',aLength='%s',STIME='%s',ETIME='%s' WHERE ANAME='%s'""" % (aDescription, int(tnum), isVIP,aLength, stime, etime, aname)
                 cursor.execute(sql)
             print("成功")
             db.commit()

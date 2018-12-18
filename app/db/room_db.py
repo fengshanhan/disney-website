@@ -33,15 +33,15 @@ class RoomCommand():
         # open database
         db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
         cursor = db.cursor()
-        sql = """SELECT * FROM ACTIVITY WHERE hname = '%s' and rno = '%s'"""%(hname,rno)
+        sql = """SELECT * FROM ROOM WHERE hname = '%s' and rno = '%s'"""%(hname,rno)
         try:
             self.cursor.execute(sql)
             results=cursor.fetchall()
             if(results == None):
-                sql = """INSERT INTO Hotel(HNAME,RNO,RPRICE) VALUES ('%s','%s','%s')"""%(hname,rno,rprice)
+                sql = """INSERT INTO ROOM(HNAME,RNO,RPRICE) VALUES ('%s','%s','%d')"""%(hname,rno,int(rprice))
                 cursor.execute(sql)
             else:
-                sql = """UPDATE ACTIVITY SET RPRICE='%s' WHERE hname = '%s' and rno = '%s'""" % (rprice,hname,rno)
+                sql = """UPDATE ROOM SET RPRICE='%d' WHERE hname = '%s' and rno = '%s'""" % (int(rprice),hname,rno)
                 cursor.execute(sql)
             print("成功")
             db.commit()
