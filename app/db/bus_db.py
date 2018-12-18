@@ -8,7 +8,7 @@ class BusCommand():
     #读取Bus信息传回界面
     def readBus(self):
         # open database
-        db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
+        db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
         cursor = db.cursor()
         sql = """SELECT * FROM BUS"""
         try:
@@ -25,7 +25,7 @@ class BusCommand():
     #更改或增加bus信息
     def modifyBus(self,bno,bStart,bEnd,sDest,eDest,totalSeat):
         # open database
-        db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
+        db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
         cursor = db.cursor()
         sql = """SELECT * FROM BUS WHERE bno = '%s'"""%(bno)
         try:

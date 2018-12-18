@@ -234,15 +234,14 @@ height:auto
                        </div>
                  <div class = 'itemTxt'>
                    <h1> <div class="name">{{ activity[0] }} </div></h1>
-                  <div class="content">{{ activity[2] }}</div>
-					 <p>{{ activity[4] }}</p>
-
+                  <div class="content">{{ activity[1] }}</div>
+                     <p>{{ activity[2] }}</p>
                  </div>
                 </div>
 
 	         <div class = 'item'>
 				    {% for comment in comments %}
-                        <h1>{{comment[0]}}</h1>
+                        <h1>Comment：{{comment[0]}}//Date:{{comment[1]}}</h1>
 				    {% endfor %}
              </div>
 
@@ -263,12 +262,11 @@ height:auto
 	    {% for activity in activities %}
          <tr>
 	    <td id="t1">{{activity[5]--activity[6]}}</td>
-	    <td id="book1">{{activity[8]}}</td>
-	    <td id="rest1">rest1</td>
+	    <td id="rest1">{{activity[]-activity[]}}</td>
          <td>
 <div class="contentli">
 <input type="button" name=""  value="-" class="jian"/>
-<input type="button" name=""  value="0" class="con"/>
+<input type="text" name=""  value="0" class="con"/>
 	<input type="button" value="+" class="jia"/><input type="button" name="" id="shop" value="confirm" /></div></td>
 	  </tr>
 		{% endfor %}
