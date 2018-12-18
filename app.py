@@ -3,6 +3,9 @@ from flask import render_template, redirect, url_for, request
 from app.db.user_db import Visitor
 from app.db.ticket_db import TicketCommand
 from app.db.user_base import VisitorCommand
+from app.db.hotel_db import HotelCommand
+from app.db.room_db import RoomCommand
+from app.db.activity_db import ActivityCommand
 from app.data import user_info
 
 app = Flask(__name__)
@@ -129,6 +132,47 @@ def ticket():
             #print("vipsuccess"+vipsuccess)
             #print("normalsuccess"+normalsuccess)
             return render_template('ticket.html')
+
+@app.route('/hotel.html',methods=['GET','POST'])
+def hotel():
+    if request.method == 'GET': #显示hotel信息
+        hotelcommand=HotelCommand()
+        hotel=hotelcommand.readHotel()
+        print(hotel)
+        print(hotel[0])
+        print(hotel[0][0])
+        print(hotel[0][4])
+        return render_template('hotel.html',hotel=hotel)
+    else:
+        pass
+
+@app.route('/room1/<hotelname>',methods=['GET','POST'])
+def room1(hotelname):
+    if request.method == 'GET': #获取当前房间信息
+        #return "your lrllrlr is %s"%hotelname
+        print("hotelname>>>")
+        print(hotelname)
+        roomcommand=RoomCommand()
+        roommessage=roomcommand.readRoom(hotelname)
+        print("roommessage")
+        print(roommessage)
+        return render_template('/room1.html',roommessage=roommessage)
+    elif request.method == 'POST':
+        #预定房间##参考订票
+        pass
+
+@app.route('/activity.html',methods=['GET','POST'])
+def activity():
+    if request.method == 'GET': #显示activity信息
+        activitycommand=ActivityCommand()
+        activities=activitycommand.readActivity()
+        print(activities)
+        print(activities[0])
+        print(activities[0][0])
+        print(activities[0][4])
+        return render_template('activity.html',activities=activities)
+    else:
+        pass
 
 if __name__ == '__main__':
     app.run(debug=True)

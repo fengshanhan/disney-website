@@ -10,13 +10,13 @@
 <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
- 
- 
- 
+
+
+
  <style>
 
  body {
-   
+
     background-image:url(../static/images/background3.jpg);
     min-height: 100%;
     background-repeat: no-repeat;
@@ -41,28 +41,28 @@
   width:90%;
   margin-left:auto;
   margin-right:auto;
-  
+
   }
   .ridename{
   background-color:#ffffff;
   width:50%;
   height:10%;
   min-width:800px;
-  min-height:300px; 
+  min-height:300px;
   box-sizing:content-box;
   margin-left:auto;
   margin-right:auto;
   margin-top:3%;
   padding:5px 15px 0px 15px;
   }
-  
+
 
  .title{
  text-align:center;
  font-weight:bold;
  padding-top:3%;
  }
- 
+
 .ridepic1{
  display:inline-block;
  padding:10px;
@@ -70,7 +70,7 @@
  background-color:#222;
 
 }
- 
+
 .ridedescrip1{
  display:inline-block;
  margin-left:40%;
@@ -82,12 +82,12 @@ p{
 }
 
 .item {
- min-width: 700px; 
- max-width: 70%; 
- min-height: 200px; 
- max-height: 280px; 
- margin: 0 auto; 
- margin-bottom: 30px; 
+ min-width: 700px;
+ max-width: 70%;
+ min-height: 200px;
+ max-height: 280px;
+ margin: 0 auto;
+ margin-bottom: 30px;
  background-color: #EEE;
  padding: 10px;
  border: 2px solid;
@@ -100,9 +100,9 @@ p{
 }
 
 .itemTxt {
- display: inline-block; 
- vertical-align: top; 
- padding-top: 10px; 
+ display: inline-block;
+ vertical-align: top;
+ padding-top: 10px;
  width: 45%;
 }
 
@@ -119,19 +119,19 @@ img{
  height:210px;
  width:275px;
 }
-     
+
 
 </style>
- 
- 
- 
- 
+
+
+
+
 </head>
 <body>
- 
+
  <div class="icon-bar">
-  <a class="active" href="#"><i class="fa fa-google-plus"></i></a> 
-  <a class="active1" href="#"><i class="fa fa-facebook"></i></a> 
+  <a class="active" href="#"><i class="fa fa-google-plus"></i></a>
+  <a class="active1" href="#"><i class="fa fa-facebook"></i></a>
   <a class="active2" href="#"><i class="fa fa-twitter"></i></a>
   <a href="map.html" id="search"><i class="fa fa-map-o" aria-hidden="true"></i></a>
 </div>
@@ -140,7 +140,7 @@ img{
     <img src="../static/images/panda_logo_good.png" id="logo" align="center">
      <li class="menu"><a href="information.html">Information</a></li>
     <li class="menu"><a href="attractions.html">Hot Activity</a></li>
-    <li class="menu" id="active"><a href="shop.html">Room</a></li>
+    <li class="menu" id="active"><a href="room1.html">Room</a></li>
     <li class="menu"><a href="food.html">Food</a></li>
     <li class="menu"><a href="activity.html">Activity</a></li>
     <li class="menu"><a href="index.html">Home</a></li>
@@ -153,22 +153,21 @@ img{
  <div class="ridecontent">
 
 
-  { % for hotel in hote1s %}
-//
-     {% end for %}
-  <h1 class="title" style='margin-bottom: 15px; font-size: 300%;'>Hotel</h1>
-
+  {% for h in hotel %}
+     <h1 class="title" style='margin-bottom: 15px; font-size: 300%;'>{{h[0]}}</h1>
 
    <div class = 'item'>
     <div class = 'itemImg'>
-    <img src = '../static/images/room1.jpg'>
+    <img src = {{h[4]}}>
     </div>
     <div class = 'itemTxt'>
-     <h1>Hotel1</h1>
-     <p>information</p>
-        <button><a class="foodlink" href="hotel1.html">VIEW</a></button>
+     <p>Address:{{h[1]}}</p>
+        <p>RoomNo:{{h[2]}}</p>
+        <p>Tele:{{h[3]}}</p>
+        <button><a class="foodlink" href="{{ url_for('room1',hotelname='lala') }}">VIEW</a></button>
     </div>
   </div>
+     {% endfor %}
 
 
 

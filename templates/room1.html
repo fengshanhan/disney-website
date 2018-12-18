@@ -208,7 +208,6 @@ img{
      <table class="indextable" cellpadding="10" width="1000" bgcolor="#F0F8FF">
 
      <tr>
-       <th>Type</th>
          <th>Price</th>
        <th>Start Time</th>
           <th>End Time</th>
@@ -219,13 +218,13 @@ img{
 
 
 
-     <tr>
-       <td>type1</td>
-          <td id="p1">$80</td>
+     {% for room in roommessage %}
+         <tr>
+          <td id="p1">{{room[1]}}</td>
        <td><input type="date" class="con3" id="tStartn" value="2018-09-24"/></td>
          <td><input type="date" id="tEndn" value="2018-09-25"/></td>
        <td>
-            50
+            {{room[0]}}
         </td>
 
 
@@ -239,6 +238,7 @@ img{
 
 
      </tr>
+         {% endfor %}
 
 
 

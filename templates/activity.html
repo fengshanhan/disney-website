@@ -149,15 +149,15 @@ img{
   <h1 class="title" style='margin-bottom: 15px; font-size: 300%;'>Activity</h1>
 
 
-  {% for activity in activtys %}
+  {% for activity in activities %}
                 <div class="item">
                  <div class = 'itemImg'>
 
                        <img src= activity.path>
                        </div>
                  <div class = 'itemTxt'>
-                   <h1> <div class="name">{{ activity.name }} </div></h1>
-                    <p><div class="content">{{ activity.content }}</div>
+                   <h1> <div class="name">{{ activity[0] }} </div></h1>
+                    <p><div class="content">{{ activity[1] }}</div>
 
                     <button><a class="foodlink" href="ww_activity.html">View</a></button></p>
                  </div>
