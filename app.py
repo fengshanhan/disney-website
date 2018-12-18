@@ -12,6 +12,7 @@ from app.data import user_info
 from app.db.administrator_db import Administration
 from app.db.bus_db import busCommand
 from app.db.stop_db import stopCommand
+import data.user_info.User
 
 app = Flask(__name__)
 #user=user_info() #全局记录下当前登陆用户的信息
@@ -287,6 +288,15 @@ def login_administrator():
             return redirect(url_for('map'))
         else:
             return "不能登陆"
+
+
+@app.route('/my_activity.html',methods=['GET','POST'])
+def my_activity():
+    if request.method == 'GET':
+        vno = User.user_no
+        activityCommand = ActivityCommand()
+        Activity = activityCommand.readActivityBook(vno)
+        return render_template("my_activity.html",activitys=Activity)
 
 
 @app.route('/administrator_activity.html',methods=['GET','POST'])
