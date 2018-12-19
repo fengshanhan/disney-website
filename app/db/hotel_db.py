@@ -16,6 +16,8 @@ class HotelCommand():
             results=cursor.fetchall()
             for result in results:
                 hname=result[0]
+                print(">>>>>>>>")
+                print(hname)
                 haddr=result[1]
                 rnum=result[2]
                 htele=result[3]
@@ -33,20 +35,23 @@ class HotelCommand():
         db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
         cursor = db.cursor()
         sql = """SELECT * FROM HOTEL WHERE hname = '%s'"""%(hname)
+        print(hname)
         try:
-            self.cursor.execute(sql)
+            cursor.execute(sql)
             results=cursor.fetchall()
             if(results == None):
+                print("11111")
                 sql = """INSERT INTO Hotel(HNAME,HADDR,RNUM,HTELE) VALUES ('%s','%s','%d','%s')"""%(hname,haddr,int(rNum),htele)
                 cursor.execute(sql)
             else:
+                print("22222")
                 sql = """UPDATE HOTEL SET HADDR='%s',RNUM='%d',HTELE='%s' WHERE HNAME='%s'""" % (haddr,int(rNum),htele,hname)
                 cursor.execute(sql)
             print("成功")
             db.commit()
             return 1
         except:
-            print("不能")
+            print("不能11")
             db.rollback()
 
         cursor.close()

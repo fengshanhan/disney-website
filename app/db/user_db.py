@@ -44,6 +44,16 @@ class Administrator():
         if administratorCommand.readAdministrator(username, password) == 1:
             print("登陆成功")
             return 1
+        elif administratorCommand.readAdministrator(username, password) == 2:
+            print("登陆成功")
+            return 2
+        elif administratorCommand.readAdministrator(username, password) == 3:
+            print("登陆成功")
+            return 3
+        elif administratorCommand.readAdministrator(username, password) == 4:
+            print("登陆成功")
+            return 4
+
         else:
             print("登陆失败")
             return 0

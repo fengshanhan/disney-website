@@ -22,6 +22,24 @@
     <!-- Core stylesheets -->
     <link rel="stylesheet" href="../static/css/ui-elements/card.css">
     <link rel="stylesheet" href="../static/css/style.css">
+
+    <script language="JavaScript">
+        function deleteRole(){
+            var td = event.srcElement;
+            var row = td.parentElement.rowIndex + 1;
+            var table = document.getElementById("Top_Table");
+            /*获取选中的行 */
+            var value = child.getElementsByTagName("td")[0].innerHTML;
+            var obj = {
+                type: 'delete'
+                aname: value
+            }
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.open('POST', 'url', true);
+            httpRequest.setRequestHeader("Content-type","application/json");
+            httpRequest.send(JSON.stringify(obj));
+        }
+    </script>
 </head>
 
 <body> 
@@ -34,14 +52,14 @@
                 <!--<h4 class="modal-title" id="myModalLabel">Modify</h4>-->
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" role="form" action="RoleManage.jsp" method="post">
-                    <div class="form-group">
+                <form role="form" action="ActivityChange" method="post">
+                    <div >
                         <label class="col-sm-3 control-label">Activity Name:</label><label style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
                           <input type="text" class="form-control" name="aname">
                         </div>
                         <label class="col-sm-3 control-label">Description:</label><label style="display:none"></label>
-                        <div class="col-xs-3 col-sm-6">
+                        <div class="col-xs-3 corl-sm-6">
                           <input type="text" class="form-control" name="description">
                         </div>
                         <label class="col-sm-3 control-label">Total Num:</label><label style="display:none"></label>
@@ -85,7 +103,7 @@
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" role="form" action="RoleManage.jsp" method="post">
-                    <div class="form-group">
+                    <div >
                         <label class="col-sm-3 control-label">SQL:</label><label id="Roleid" style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
                           <input type="text" class="form-control" id="htele"> 
