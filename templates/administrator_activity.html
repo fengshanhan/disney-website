@@ -39,6 +39,22 @@
             httpRequest.setRequestHeader("Content-type","application/json");
             httpRequest.send(JSON.stringify(obj));
         }
+
+        function deleteRole(){
+            var td = event.srcElement;
+            var row = td.parentElement.rowIndex + 1;
+            var table = document.getElementById("Top_Table");
+            /*获取选中的行 */
+            var value = child.getElementsByTagName("td")[0].innerHTML;
+            var obj = {
+                type: 'delete'
+                aname: value
+            }
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.open('POST', 'url', true);
+            httpRequest.setRequestHeader("Content-type","application/json");
+            httpRequest.send(JSON.stringify(obj));
+        }
     </script>
 </head>
 
@@ -52,7 +68,7 @@
                 <!--<h4 class="modal-title" id="myModalLabel">Modify</h4>-->
             </div>
             <div class="modal-body">
-                <form role="form" action="ActivityChange" method="post">
+                <form role="form" method="post">
                     <div >
                         <label class="col-sm-3 control-label">Activity Name:</label><label style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
@@ -85,7 +101,7 @@
                         <!-- <label for="用户名" class="col-sm-2 control-label" style="color:#FF0000;text-align:left;">已存在</label> -->
                     </div>                    
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-info" onclick="return Modify()" style="color:white;float: top;">Apply</button>
+                        <button type="submit" class="btn btn-info" style="color:white;float: top;">Apply</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal" style="float: top;">Close</button>                   
                     </div>
                    </form>
