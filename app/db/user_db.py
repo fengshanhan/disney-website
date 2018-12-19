@@ -53,7 +53,6 @@ class Administrator():
         elif administratorCommand.readAdministrator(username, password) == 4:
             print("登陆成功")
             return 4
-
         else:
             print("登陆失败")
             return 0

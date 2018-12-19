@@ -252,14 +252,14 @@ def administrator_activity():
             stime = request.form.get('stime')
             etime = request.form.get('etime')
             if activityCommand.modifyActivity(aname,description,tnum,vip,aLength,stime,etime) == 1:
-                   return redirect(url_for('login'))
+                   return redirect(url_for('administrator_activity'))
             else:
                    return "失败"
         else:       #删除
             print("删除")
             aname = request.form.get('aname_delete')
             if activityCommand.deleteActivity(aname)==1:
-                return redirect(url_for('login'))
+                return redirect(url_for('administrator_activity'))
             else:
                 return "失败"
 
@@ -333,7 +333,7 @@ def administrator_transport():
             sdes = request.form.get('sdes')
             edes = request.form.get('edes')
             Total_seat = request.form.get('Total_seat')
-            if busCommand.modifyBus(bno,bStart,sdes,edes,Total_seat) == 1:
+            if busCommand.modifyBus(bno,bStart,bEnd,sdes,edes,Total_seat) == 1:
                 return redirect(url_for('administrator_transport'))
             else:
                 return "失败"

@@ -374,12 +374,12 @@
                           <tbody>
                             {% for record in Bus %}
                             <tr>
-                                <td>{{ record.bno }}</td>
-                                <td>{{ record.bStart }}</td>
-                                <td>{{ record.bEnd }}</td>
-                                <td>{{ record.sDest }}</td>
-                                <td>{{ record.eDest }}</td>
-                                <td>{{ record.totalSeat }}</td>
+                                <td>{{ record[0] }}</td>
+                                <td>{{ record[1] }}</td>
+                                <td>{{ record[2] }}</td>
+                                <td>{{ record[3] }}</td>
+                                <td>{{ record[4] }}</td>
+                                <td>{{ record[5] }}</td>
                                 <td>
                                 <a data-toggle="modal" data-target="#Bus_modal" style="color:#338FCC" href="">Modify</a>
                                 /
@@ -428,13 +428,13 @@
                           <tbody>
                             {% for record in Stop %}
                             <tr>
-                              <td>{{ record.stID }}</td>
-                              <td>{{ record.stName }}</td>
-                              <td>{{ record.bno }}</td>
-                              <td>{{ record.Time1 }}</td>
-                              <td>{{ record.Time2 }}</td>
-                              <td>{{ record.Time3 }}</td>
-                              <td>{{ record.Time4 }}</td>
+                              <td>{{ record[0] }}</td>
+                              <td>{{ record[1] }}</td>
+                              <td>{{ record[2] }}</td>
+                              <td>{{ record[3] }}</td>
+                              <td>{{ record[4] }}</td>
+                              <td>{{ record[5] }}</td>
+                              <td>{{ record[6] }}</td>
                               <td>
                                 <a data-toggle="modal" data-target="#Stop_modal" style="color:#338FCC" href="">Modify</a>
                                 /
