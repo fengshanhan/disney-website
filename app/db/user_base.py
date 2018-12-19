@@ -87,21 +87,32 @@ class AdministratorCommand():
         # open database
         db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
         cursor = db.cursor()
-        sql="""SELECT * FROM ADMINISTRATION WHERE adNo= '%s' and psw= '%s'"""%(name,password)
+        sql="""SELECT * FROM ADMINISTRATOR WHERE adNo= '%s' and psw= '%s'"""%(name,password)
         try:
             cursor.execute(sql)
             results=cursor.fetchall()
+            for result in results:
+                dpt=result[2]
+                print(dpt)
+            if dpt == 'Disney Land':
+                return 1
+            elif dpt == 'Activity':
+                return 2
+            elif dpt == 'Hotel':
+                return 3
+            if dpt == 'Transport':
+                return 4
             n=cursor.rownumber
             print("rownumber>>>>>")
             print(n)
             if n == 0:
                 return 0
-            return 1
         except:
             import traceback
             print("呜呜呜呜呜呜呜呜呜呜呜")
             traceback.print_exc()
 
         cursor.close()
+
 
 

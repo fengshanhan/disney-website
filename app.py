@@ -9,7 +9,7 @@ from app.db.hotel_db import HotelCommand
 from app.db.room_db import RoomCommand
 from app.db.activity_db import ActivityCommand
 from app.data import user_info
-from app.db.administrator_db import Administration
+from app.db.administrator_db import administratoInfo
 from app.db.bus_db import BusCommand
 from app.db.stop_db import StopCommand
 
@@ -208,7 +208,13 @@ def login_administrator():
         name=request.form.get('name')
         password=request.form.get('password')
         if administrator.login(name,password) == 1:
-            return redirect(url_for('login_administrator'))
+            return redirect(url_for('administrator_chief'))
+        elif administrator.login(name,password) == 2:
+            return redirect(url_for('administrator_activity'))
+        if administrator.login(name,password) == 3:
+            return redirect(url_for('administrator_hotel'))
+        if administrator.login(name,password) == 4:
+            return redirect(url_for('administrator_transport'))
         else:
             return "不能登陆"
 
@@ -216,7 +222,7 @@ def login_administrator():
 @app.route('/my_activity.html',methods=['GET','POST'])
 def my_activity():
     if request.method == 'GET':
-        vno = User.user_no
+        vno = user_info.User.user_no
         activityCommand = ActivityCommand()
         Activity = activityCommand.readActivityBook(vno)
         return render_template("my_activity.html",activitys=Activity)
@@ -254,11 +260,11 @@ def administrator_activity():
 @app.route('/administrator_chief.html',methods=['GET','POST'])
 def administrator_chief():
     if request.method == 'GET':
-        administrationCommand = Administration()
+        administrationCommand = administratoInfo()
         administration = administrationCommand.readAdministrator()
         return render_template('administrator_chief.html', administration=administration)
     else:
-        administration = Administration()
+        administration = administratoInfo()
         adNo=request.form.get('adNo')
         password = request.form.get('password')
         dept = request.form.get('dept')
@@ -274,10 +280,13 @@ def administrator_hotel():
         hotelcommand = HotelCommand()
         hotel = hotelcommand.readHotel()
         roomcommand = RoomCommand()
-        room = roomcommand.readHotel()
+        room = roomcommand.readRoom_admi()
+        print(";;;;;;;;;;;")
         return render_template('administrator_hotel.html', Hotel=hotel,Room=room)
     else:
-        if (request.form.get('rno') != None):      #修改的hotel
+        if (request.form.get('rno') != None):
+            #修改的hotel
+            print(";;;;;")
             hotelCommand = HotelCommand()
             hname=request.form.get('hname')
             haddr = request.form.get('haddr')
@@ -289,6 +298,7 @@ def administrator_hotel():
                 return "失败"
         else:                                      #修改的Room
             roomCommand =RoomCommand()
+            print("...........")
             hname = request.form.get('hname')
             rno = request.form.get('rno')
             rprice = request.form.get('rprice')

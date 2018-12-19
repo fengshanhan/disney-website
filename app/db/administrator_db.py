@@ -4,13 +4,13 @@
 import pymysql
 import  hashlib
 
-class Administration():
+class administratoInfo():
     #读取administrator信息传回界面
     def readAdministrator(self):
         # open database
         db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
         cursor = db.cursor()
-        sql="""SELECT * FROM ADMINISTRATION"""
+        sql="""SELECT * FROM administrator"""
         try:
             cursor.execute(sql)
             results=cursor.fetchall()
@@ -28,15 +28,15 @@ class Administration():
         # open database
         db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
         cursor = db.cursor()
-        sql = """SELECT * FROM ADMINISTRATION WHERE adNo = '%s'"""%(adNo)
+        sql = """SELECT * FROM administrator WHERE adNo = '%s'"""%(adNo)
         try:
             self.cursor.execute(sql)
             results=cursor.fetchall()
             if(results == None):
-                sql = """INSERT INTO ADMINISTRATION(ADNO,psw,DEPT) VALUES ('%s','%s','%s')"""%(adNo,psw,dept)
+                sql = """INSERT INTO administrator(ADNO,psw,DEPT) VALUES ('%s','%s','%s')"""%(adNo,psw,dept)
                 cursor.execute(sql)
             else:
-                sql = """UPDATE ADMINISTRATION SET psw='%s',DEPT='%s' WHERE ADNO='%s'""" % (psw,dept,adNo)
+                sql = """UPDATE administrator SET psw='%s',DEPT='%s' WHERE ADNO='%s'""" % (psw,dept,adNo)
                 cursor.execute(sql)
             print("成功")
             db.commit()

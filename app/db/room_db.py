@@ -28,6 +28,25 @@ class RoomCommand():
         cursor.close()
         return results
 
+    # 读出当前酒店的房间信息（hname,rno,isEmpty,rprice）,根据rprice分类   对Room table的操作
+    def readRoom_admi(self):
+        # open database
+        db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
+        cursor = db.cursor()
+
+        sql = """SELECT * FROM ROOM """
+        try:
+            cursor.execute(sql)
+            results = cursor.fetchall()
+
+        except:
+            import traceback
+            traceback.print_exc()
+            print("error")
+
+        cursor.close()
+        return results
+
     #更改或增加Room信息
     def modifyRoom(self,hname,rno,rprice):
         # open database
@@ -35,7 +54,7 @@ class RoomCommand():
         cursor = db.cursor()
         sql = """SELECT * FROM ROOM WHERE hname = '%s' and rno = '%s'"""%(hname,rno)
         try:
-            self.cursor.execute(sql)
+            cursor.execute(sql)
             results=cursor.fetchall()
             if(results == None):
                 sql = """INSERT INTO ROOM(HNAME,RNO,RPRICE) VALUES ('%s','%s','%d')"""%(hname,rno,int(rprice))

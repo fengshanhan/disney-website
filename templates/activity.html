@@ -14,6 +14,16 @@
 <link type="text/css" rel="stylesheet" href="../static/css/stylesheet.css"></link>
 <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
+     <!-- global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/font-icon-style.css">
+    <link rel="stylesheet" href="../static/css/style.default.css" id="theme-stylesheet">
+
+    <!-- Core stylesheets -->
+    <link rel="stylesheet" href="../static/css/ui-elements/card.css">
+    <link rel="stylesheet" href="../static/css/style.css">
 
  
  <style>
@@ -217,7 +227,7 @@ img{
                    <h1> <div class="name">{{ activity[0] }} </div></h1>
                     <p><div class="content">{{ activity[1] }}</div>
 
-                    <button><a class="foodlink" href="ww_activity.html">View</a></button></p>
+                    <button><a data-toggle="modal" data-target="#myModal" style="color:#338FCC" href="">Modify</a></button></p>
                  </div>
                 </div>
             {% endfor %}
