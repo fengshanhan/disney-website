@@ -20,6 +20,11 @@ ticketno=0
 #my information 登录后跳转到自己的信息页面
 
 
+@app.route('/my.html',methods=['GET','POST'])
+def show():
+    if request.method=='GET':#显示自己的信息
+       pass
+
 
 #注册时实现ID自增长
 @app.route('/register.html',methods=['GET','POST'])
@@ -62,7 +67,7 @@ def login():
             # 这里需要从数据库中读取name为当前name的vno，然后存储到user_info中
             num = visitorCommand.read_for_no(name)
             user_info.User.user_no = num #记录下当前登陆用户号
-            return redirect(url_for('bus '))
+            return render_template("index.html")
         else:
             return "不能登陆"
 

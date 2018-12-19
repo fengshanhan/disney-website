@@ -8,7 +8,7 @@ class VisitorCommand():
     #插入游客，和注册相对应
     def insertVisitor(self,id,name,tel,isVIP,wallet,password):
         #open database
-        db=pymysql.connect("localhost","root","rewq66505441-","dbwebsite")
+        db=pymysql.connect("localhost","root","","dbwebsite")
         cursor=db.cursor()
         sql="""INSERT INTO VISITOR (VNO,VNAME,TELNO,ISVIP,WALLET,PSW) VALUES ('%s','%s','%s','%s','%d','%s')"""%(id,name,tel,isVIP,wallet,password)
         #print("插入"+name+id)
@@ -26,7 +26,7 @@ class VisitorCommand():
     #查询，和登陆相对应
     def readVisitor(self,name,password):
         # open database
-        db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
+        db = pymysql.connect("localhost", "root", "", "dbwebsite")
         cursor = db.cursor()
         sql="""SELECT * FROM VISITOR WHERE VNAME= '%s' and PSW= '%s'"""%(name,password)
         try:
@@ -48,7 +48,7 @@ class VisitorCommand():
     #查询表内总的用户数
     def readVisitorNum(self):
         # open database
-        db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
+        db = pymysql.connect("localhost", "root", "", "dbwebsite")
         cursor = db.cursor()
         sql = """SELECT * FROM VISITOR"""
         try:
@@ -65,7 +65,7 @@ class VisitorCommand():
     #查询，和获取当前用户账号相对应
     def read_for_no(self,vname):
         # open database
-        db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
+        db = pymysql.connect("localhost", "root", "", "dbwebsite")
         cursor = db.cursor()
         sql = """SELECT VNO FROM VISITOR WHERE VNAME= '%s'""" %vname
         try:
