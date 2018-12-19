@@ -9,7 +9,7 @@ class ActivityCommand():
     #读取activity booking的信息传回界面
     def readActivityBook(self,vno):
         # open database
-        db = pymysql.connect("localhost", "root", "rewq66505441-", "database")
+        db = pymysql.connect("localhost", "root", "", "database")
         cursor = db.cursor()
         sql = """SELECT * FROM activityBooking WHERE vno='%s'""" % (vno)
         try:

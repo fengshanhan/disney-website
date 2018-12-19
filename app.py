@@ -167,7 +167,7 @@ def room1(hotelname):
         pass
 
 @app.route('/activity.html',methods=['GET','POST'])
-def activity():
+def activity1():
     if request.method == 'GET': #显示activity信息
         activitycommand=ActivityCommand()
         activities=activitycommand.readActivity()
@@ -191,7 +191,7 @@ def activity_ww(activityname):
 
 
 @app.route('/ticket.html',methods=['GET','POST'])
-def ticket():
+def ticket1():
     #每次进入买票页面的时候就要从系统获取当前的票号，则新加的票号为+1
     ticketCommand=TicketCommand()
     global ticketno
@@ -377,7 +377,7 @@ def administrator_hotel():
 
 
 @app.route('/administrator_transport.html',methods=['GET','POST'])
-def administrator_hotel():
+def administrator_hotel1():
     if request.method == 'GET':
         busCommand = BusCommand()
         bus = busCommand.readHotel()
