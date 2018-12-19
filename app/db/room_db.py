@@ -56,7 +56,7 @@ class RoomCommand():
         try:
             cursor.execute(sql)
             results=cursor.fetchall()
-            if(results == None):
+            if(results is None):
                 sql = """INSERT INTO ROOM(HNAME,RNO,RPRICE) VALUES ('%s','%s','%d')"""%(hname,rno,int(rprice))
                 cursor.execute(sql)
             else:

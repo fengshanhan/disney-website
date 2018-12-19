@@ -29,9 +29,9 @@ class BusCommand():
         cursor = db.cursor()
         sql = """SELECT * FROM BUS WHERE bno = '%s'"""%(bno)
         try:
-            self.cursor.execute(sql)
+            cursor.execute(sql)
             results=cursor.fetchall()
-            if(results == None):
+            if(results is None):
                 sql = """INSERT INTO BUS(bno,bStart,bEnd,sDest,eDest,totalSeat) VALUES ('%s','%s','%s','%s','%s','%d')"""%(bno,bStart,bEnd,sDest,eDest,int(totalSeat))
                 cursor.execute(sql)
             else:

@@ -29,9 +29,9 @@ class StopCommand():
         cursor = db.cursor()
         sql = """SELECT * FROM busStop WHERE stID = '%s'"""%(stID)
         try:
-            self.cursor.execute(sql)
+            cursor.execute(sql)
             results=cursor.fetchall()
-            if(results == None):
+            if(results is None):
                 sql = """INSERT INTO busStop(stID,bno,stName,Time1,Time2,Time3,Time4) VALUES ('%s','%s','%s','%s','%s','%s','%s')"""%(stID,bno,stName,Time1,Time2,Time3,Time4)
                 cursor.execute(sql)
             else:

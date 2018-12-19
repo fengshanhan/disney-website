@@ -39,7 +39,7 @@ class HotelCommand():
         try:
             cursor.execute(sql)
             results=cursor.fetchall()
-            if(results == None):
+            if(results is None):
                 print("11111")
                 sql = """INSERT INTO Hotel(HNAME,HADDR,RNUM,HTELE) VALUES ('%s','%s','%d','%s')"""%(hname,haddr,int(rNum),htele)
                 cursor.execute(sql)

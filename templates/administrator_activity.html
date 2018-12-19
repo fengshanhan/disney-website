@@ -23,23 +23,7 @@
     <link rel="stylesheet" href="../static/css/ui-elements/card.css">
     <link rel="stylesheet" href="../static/css/style.css">
 
-    <script language="JavaScript">
-        function deleteRole(){
-            var td = event.srcElement;
-            var row = td.parentElement.rowIndex + 1;
-            var table = document.getElementById("Top_Table");
-            /*获取选中的行 */
-            var value = child.getElementsByTagName("td")[0].innerHTML;
-            var obj = {
-                type: 'delete'
-                aname: value
-            }
-            var httpRequest = new XMLHttpRequest();
-            httpRequest.open('POST', 'url', true);
-            httpRequest.setRequestHeader("Content-type","application/json");
-            httpRequest.send(JSON.stringify(obj));
-        }
-    </script>
+
 </head>
 
 <body> 
@@ -52,7 +36,7 @@
                 <!--<h4 class="modal-title" id="myModalLabel">Modify</h4>-->
             </div>
             <div class="modal-body">
-                <form role="form" action="ActivityChange" method="post">
+                <form role="form" method="post">
                     <div >
                         <label class="col-sm-3 control-label">Activity Name:</label><label style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
@@ -85,7 +69,7 @@
                         <!-- <label for="用户名" class="col-sm-2 control-label" style="color:#FF0000;text-align:left;">已存在</label> -->
                     </div>                    
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-info" onclick="return Modify()" style="color:white;float: top;">Apply</button>
+                        <button type="submit" class="btn btn-info"  style="color:white;float: top;">Apply</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal" style="float: top;">Close</button>                   
                     </div>
                    </form>
@@ -94,7 +78,7 @@
               </div>
          </div><!-- /.modal -->
 
-    <div class="modal fade" id="SQL" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">                
+    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -102,16 +86,17 @@
                 <!--<h4 class="modal-title" id="myModalLabel">Modify</h4>-->
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" role="form" action="RoleManage.jsp" method="post">
+                <form class="form-horizontal" role="form" method="post">
                     <div >
-                        <label class="col-sm-3 control-label">SQL:</label><label id="Roleid" style="display:none"></label>
+                        <label>Enter the name of activity you want to delete:</label>
+                        <label id="Roleid" style="display:none"></label>
                         <div class="col-xs-3 col-sm-6">
-                          <input type="text" class="form-control" id="htele"> 
+                          <input type="text" class="form-control" name="aname_delete">
                         </div>
                         <!-- <label for="用户名" class="col-sm-2 control-label" style="color:#FF0000;text-align:left;">已存在</label> -->
                     </div>                    
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-info" onclick="return Modify()" style="color:white;float: top;">Apply</button>
+                        <button type="submit" class="btn btn-info" style="color:white;float: top;">Apply</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal" style="float: top;">Close</button>                   
                     </div>
                    </form>
@@ -330,7 +315,7 @@
                                         <a class="dropdown-item nav-link" data-toggle="modal" data-target="#myModal" style="color:#338FCC" href="">Add</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item nav-link" data-toggle="modal" data-target="#SQL" style="color:#338FCC" href="">SQL</a>
+                                        <a class="dropdown-item nav-link" data-toggle="modal" data-target="#DeleteModal" style="color:#338FCC" href="">Delete</a>
                                     </li>
                                 </ul>
                             </div>
@@ -355,17 +340,15 @@
                           <tbody>
                             {% for record in Activity %}
                             <tr>
-                              <td>{{ record.aname }}</td>
-                              <td>{{ record.aDescription }}</td>
-                              <td>{{ record.tnum }}</td>
-                              <td>{{ record.isVIP }}</td>
-                                <td>{{ record.aLength }}</td>
-                              <td>{{ record.sTime }}</td>
-                              <td>{{ record.eTime }}</td>
+                              <td>{{ record[0] }}</td>
+                              <td>{{ record[1] }}</td>
+                              <td>{{ record[2] }}</td>
+                              <td>{{ record[3] }}</td>
+                                <td>{{ record[4] }}</td>
+                              <td>{{ record[5] }}</td>
+                              <td>{{ record[6] }}</td>
                               <td>
                                 <a data-toggle="modal" data-target="#myModal" style="color:#338FCC" href="">Modify</a>
-                                /
-                                <a data-toggle="modal" data-target="#myModal" style="color:#6B5EA2" href="">Delete</a>
                                 </td>
                             </tr>
                             {% endfor %}
@@ -389,6 +372,25 @@
     
     <!--Core Javascript -->
     <script src="../static/js/mychart.js"></script>
+
+<script>
+    function deleteRole(){
+        debugger;
+        var td = event.srcElement;
+        var row = td.parentElement.rowIndex + 1;
+        var table = document.getElementById("Top_Table");
+        /*获取选中的行 */
+        var value = child.getElementsByTagName("td")[0].innerHTML;
+        var obj = {
+            type: 'delete'
+            aname: value
+        }
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.open('POST', 'url', true);
+        httpRequest.setRequestHeader("Content-type","application/json");
+        httpRequest.send(JSON.stringify(obj));
+    }
+</script>
     
 </body>
 

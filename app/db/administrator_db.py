@@ -30,9 +30,9 @@ class administratoInfo():
         cursor = db.cursor()
         sql = """SELECT * FROM administrator WHERE adNo = '%s'"""%(adNo)
         try:
-            self.cursor.execute(sql)
+            cursor.execute(sql)
             results=cursor.fetchall()
-            if(results == None):
+            if(results is None):
                 sql = """INSERT INTO administrator(ADNO,psw,DEPT) VALUES ('%s','%s','%s')"""%(adNo,psw,dept)
                 cursor.execute(sql)
             else:

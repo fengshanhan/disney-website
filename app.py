@@ -17,6 +17,10 @@ app = Flask(__name__)
 #user=user_info() #全局记录下当前登陆用户的信息
 ticketno=0
 
+#my information 登录后跳转到自己的信息页面
+
+
+
 #注册时实现ID自增长
 @app.route('/register.html',methods=['GET','POST'])
 def register():
@@ -35,7 +39,7 @@ def register():
         print(password)
         print(confirm)
         if visitor.register(num,name,password,confirm) == 1:
-            return redirect(url_for('login'))
+            return render_template("my.html")
         else:
             return "不能注册"
     else:
@@ -58,13 +62,13 @@ def login():
             # 这里需要从数据库中读取name为当前name的vno，然后存储到user_info中
             num = visitorCommand.read_for_no(name)
             user_info.User.user_no = num #记录下当前登陆用户号
-            return redirect(url_for('map'))
+            return redirect(url_for('bus '))
         else:
             return "不能登陆"
 
-@app.route('/map.html',methods=['GET','POST'])
+@app.route('/bus.html',methods=['GET','POST'])
 def map():
-    return render_template('map.html')
+    return render_template('bus.html')
 
 @app.route('/ticket.html',methods=['GET','POST'])
 def ticket():
@@ -236,7 +240,10 @@ def administrator_activity():
         return render_template('administrator_activity.html', Activity=Activity)
     else:
         activityCommand = ActivityCommand()
-        if (request.form.get('type') == None):  #修改activity
+        print("收到了POST!")
+        print(request.form.get('aname_delete'))
+        if (request.form.get('aname_delete') is None):  #修改或增加activity
+            print("修改activity")
             aname=request.form.get('aname')
             description = request.form.get('description')
             tnum = request.form.get('tnum')
@@ -249,8 +256,9 @@ def administrator_activity():
             else:
                    return "失败"
         else:       #删除
-            aname = request.form.get('aname')
-            if ActivityCommand.deleteActivity(aname)==1:
+            print("删除")
+            aname = request.form.get('aname_delete')
+            if activityCommand.deleteActivity(aname)==1:
                 return redirect(url_for('login'))
             else:
                 return "失败"
