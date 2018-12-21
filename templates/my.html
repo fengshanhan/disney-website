@@ -26,6 +26,55 @@
 
 
 <body>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <!--<h4 class="modal-title" id="myModalLabel">Modify</h4>-->
+            </div>
+            <div class="modal-body">
+                <form role="form" method="post">
+                    <div >
+                        <label class="col-sm-3 control-label">Name:</label><label style="display:none"></label>
+                        <div class="col-xs-3 col-sm-6">
+                          <input type="text" class="form-control" name="name">
+                        </div>
+                        <label class="col-sm-3 control-label">telephone:</label><label style="display:none"></label>
+                        <div class="col-xs-3 col-sm-6">
+                          <input type="text" class="form-control" name="telephone">
+                        </div>
+
+                        <!-- <label for="用户名" class="col-sm-2 control-label" style="color:#FF0000;text-align:left;">已存在</label> -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-info"  style="color:white;float: top;">Apply</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" style="float: top;">Close</button>
+                    </div>
+                   </form>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div>
+         </div><!-- /.modal -->
+
+    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <!--<h4 class="modal-title" id="myModalLabel">Modify</h4>-->
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" method="post">
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-info" style="color:white;float: top;">Apply</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" style="float: top;">Close</button>
+                    </div>
+                   </form>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div>
+         </div><!-- /.modal -->
 
 
 <!--====================================================
@@ -39,8 +88,9 @@
                 <div class="avatar"><img src="../static/images/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
                 <div class="title">
 
-
-                    <h1 class="h4">MY name</h1>
+                     {% for infromation in informations %}
+                    <h1 class="h4">Customer ID:{{ infromation[0] }}</h1>
+                    {% endfor %}
 
 
                 </div>
@@ -48,7 +98,7 @@
             <hr>
             <!-- Sidebar Navidation Menus-->
             <ul class="list-unstyled">
-                <li class="active"> <a href="index.html"><i class="icon-home"></i>Information</a></li>
+                <li class="active"> <a href="my.html"><i class="icon-home"></i>Information</a></li>
                 <li><a href="#apps" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>My booking</a>
                     <ul id="apps" class="collapse list-unstyled">
                         <li><a href="my_ticket.html">Ticket</a></li>
@@ -88,20 +138,21 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >Full Name</label>
 
-                         [           </div>
-                                    <div class="form-group">
-                                        <label >Email address</label>
+                                       {% for infromation in informations %}
+                                                <h1 >name:{{ infromation[1] }}</h1>
+                                                <h1 >teleNo:{{ infromation[2] }}</h1>
+                                                      <h1 >VIP:{{ infromation[3] }}</h1>
+                                                  <h1 >wallet:{{ infromation[4] }}</h1>
+                                                {% endfor %}
 
-                                    </div>
 
                                 </div>
 
                             </div>
+                            </div>
 
-                            <button type="submit" class="btn btn-general btn-blue mr-2">Submit</button>
-                            <button type="reset" class="btn btn-general btn-white">Cancel</button>
+                            <a data-toggle="modal" data-target="#myModal" style="color:#338FCC" href="">Modify</a>
                         </form>
 
 

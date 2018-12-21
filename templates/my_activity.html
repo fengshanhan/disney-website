@@ -38,7 +38,9 @@
             <div class="sidebar-header d-flex align-items-center">
                 <div class="avatar"><img src="../static/images/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
                 <div class="title">
-                    <h1 class="h4">Vno</h1>
+                    {% for activity in activitys %}
+                    <h1 class="h4">Customer ID: {{activity[1]}}</h1>
+                    {% endfor %}
                 </div>
             </div>
             <hr>
@@ -81,27 +83,28 @@
                 <div class="col-md-12">
                     <div class="card form" id="form1">
                         <div class="card-header">
-                            <h3><i class="fa fa-user-circle"></i> {{activity.name}}</h3>
+                            <h3><i class="fa fa-user-circle"></i> {{activity[0]}}</h3>
+
                         </div>
                         <br>
                         <form>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >{{activity.starttime}}</label>
+
+                                         <p> Booking time:{{activity[2]}}</p>
+                                        <h3> {{activity[3]}} -- {{activity[4]}}</h3>
+                                         <h3> booking quantity:{{activity[8]}}</h3>
+
+
 
                                     </div>
-                                    <div class="form-group">
-                                        <label >{{activity.endtime}}</label>
-
-                                    </div>
 
 
 
-                                    <div class="form-group">
-                                        <label >{{activity.quantity}}</label>
 
-                                    </div>
+
+
 
                                 </div>
 
@@ -114,7 +117,7 @@
             </div>
 
 
-                 {% end for %}
+                 {% endfor %}
 
 
 

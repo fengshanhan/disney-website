@@ -9,7 +9,7 @@ class ActivityCommand():
     #读取activity booking的信息传回界面
     def readActivityBook(self,vno):
         # open database
-        db = pymysql.connect("localhost", "root", "", "database")
+        db = pymysql.connect("localhost", "root", "", "dbwebsite")
         cursor = db.cursor()
         sql = """SELECT * FROM activityBooking WHERE vno='%s'""" % (vno)
         try:
@@ -27,7 +27,7 @@ class ActivityCommand():
     #读取activity信息传回界面
     def readActivity(self):
         # open database
-        db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
+        db = pymysql.connect("localhost", "root", "", "dbwebsite")
         cursor = db.cursor()
         sql="""SELECT * FROM ACTIVITY"""
 
@@ -45,7 +45,7 @@ class ActivityCommand():
     #读取特定的活动信息传回界面
     def readActivity_ww(self,activity):
         # open database
-        db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
+        db = pymysql.connect("localhost", "root", "", "dbwebsite")
         cursor = db.cursor()
         sql="""SELECT ANAME,TNUM,ALENGTH FROM ACTIVITY WHERE ANAME='%s'"""%(activity)
         try:
@@ -64,7 +64,7 @@ class ActivityCommand():
     # 读取特定的活动信息传回界面
     def readComment(self, activity):
         # open database
-        db = pymysql.connect("localhost", "root", "rewq66505441-", "dbwebsite")
+        db = pymysql.connect("localhost", "root", "", "dbwebsite")
         cursor = db.cursor()
         sql = """SELECT REVIEW，REVIEWDATE FROM ACTIVITYBOOKING WHERE ANAME='%s'""" % (activity)
         try:

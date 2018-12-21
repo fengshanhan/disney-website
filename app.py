@@ -19,11 +19,25 @@ ticketno=0
 
 #my information 登录后跳转到自己的信息页面
 
-
 @app.route('/my.html',methods=['GET','POST'])
-def show():
+def my():
     if request.method=='GET':#显示自己的信息
-       pass
+        visitorCommand= VisitorCommand()
+        password=user_info.User.user_psw
+        name = user_info.User.user_name
+        informations = visitorCommand.showVisitor(name, password)
+        print (informations)
+        return render_template('my.html', informations=informations)  # 把数据传给页面前端
+
+    else:
+        name = request.form.get('name')
+        print(name)
+        tel=request.form.get('telephone')
+        print (tel)
+        visitorCommand = VisitorCommand()
+        informations=visitorCommand.modfiyVisitor(user_info.User.user_no,name,tel)
+        print (informations)
+        return render_template('my.html', informations=informations)  # 把数据传给页面前端
 
 
 #注册时实现ID自增长
@@ -58,16 +72,19 @@ def login():
     else:
         visitor=Visitor()
         visitorCommand=VisitorCommand()
+
         user_info.User.user_name=request.form.get('name') #记录下当前用户名,用户名唯一！！！
         name=request.form.get('name')
+
         password=request.form.get('password')
+        user_info.User.user_psw=password;
         if visitor.login(name,password) == 1:
             #可以登陆
             # 获取当前的用户ID
             # 这里需要从数据库中读取name为当前name的vno，然后存储到user_info中
             num = visitorCommand.read_for_no(name)
             user_info.User.user_no = num #记录下当前登陆用户号
-            return render_template("index.html")
+            return redirect(url_for('my'))
         else:
             return "不能登陆"
 
@@ -234,8 +251,8 @@ def my_activity():
         vno = user_info.User.user_no
         activityCommand = ActivityCommand()
         Activity = activityCommand.readActivityBook(vno)
+        print (Activity)
         return render_template("my_activity.html",activitys=Activity)
-
 
 @app.route('/administrator_activity.html',methods=['GET','POST'])
 def administrator_activity():

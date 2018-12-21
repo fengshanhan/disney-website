@@ -5,6 +5,28 @@ import pymysql
 import  hashlib
 
 class VisitorCommand():
+
+    #游客修改自己的信息
+    def modfiyVisitor(self,vno,name,tel):
+        # open database
+        db = pymysql.connect("localhost", "root", "", "dbwebsite")
+        cursor = db.cursor()
+        sql = """UPDATE VISITOR SET vname='%s' , telNo='%s' WHERE vno= '%s'""" % (name,tel,vno)
+        cursor.execute(sql)
+
+        sql= """SELECT * FROM VISITOR WHERE vno= '%s'""" % (vno)
+        cursor.execute(sql)
+
+        db.commit()
+
+        results = cursor.fetchall()
+
+
+        cursor.close()
+        return results
+
+
+
     #插入游客，和注册相对应
     def insertVisitor(self,id,name,tel,isVIP,wallet,password):
         #open database
@@ -22,6 +44,30 @@ class VisitorCommand():
             db.rollback()
 
         cursor.close()
+
+    #查询，显示信息到my.html上
+    def showVisitor(self,name,password):
+        # open database
+        db = pymysql.connect("localhost", "root", "", "dbwebsite")
+        cursor = db.cursor()
+        sql="""SELECT * FROM VISITOR WHERE VNAME= '%s' and PSW= '%s'"""%(name,password)
+        try:
+            cursor.execute(sql)
+            results=cursor.fetchall()
+            n=cursor.rownumber
+            print("rownumber>>>>>")
+            print(n)
+            if n == 0:
+                return 0
+            return results
+        except:
+            import traceback
+            print("呜呜呜呜呜呜呜呜呜呜呜")
+            traceback.print_exc()
+
+        cursor.close()
+
+
 
     #查询，和登陆相对应
     def readVisitor(self,name,password):
@@ -44,6 +90,8 @@ class VisitorCommand():
             traceback.print_exc()
 
         cursor.close()
+        print ("results=="+results)
+        return results
 
     #查询表内总的用户数
     def readVisitorNum(self):
